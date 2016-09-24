@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # PostgreSQL driver
 gem 'pg'
 
+# Added because damn this thing
+gem 'nokogiri', '~>1.6.7.2'
+
 # Sinatra driver
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -13,6 +16,8 @@ gem 'activerecord', '~>4.2.0'
 gem 'rake'
 
 gem 'shotgun'
+gem 'bcrypt'
+gem 'pry'
 
 group :test do
   gem 'shoulda-matchers'
