@@ -18,8 +18,15 @@
   <title></title>
 </head>
 <body>
+<header id="header"><h1>Todo List</h1></header>
 <div class="container">
-  <header></header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Log in</a>
+      <li><a href="/users/new">Register</a></li>
+    </ul>
+  </nav>
   <%= yield %>
 </div>
 </body>

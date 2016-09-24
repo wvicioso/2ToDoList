@@ -4,19 +4,30 @@
 
 .container {
   position: relative;
+  width: 920px;
+  margin: 20px auto;
 }
 
 nav {
   position: absolute;
   left: 0px;
   width: 200px;
+  border: 2px solid black;
 }
 
 section {
-  margin_left: 200px;
-
+  margin-left: 200px;
 }
 
 header {
-  
+  height: 70px;
+  background-color: black;
+  color: white;
+  margin-top: 0px;
+}
+
+#header h1 {
+  width: 10%;
+  margin: auto;
+  padding-top: 15px;
 }
