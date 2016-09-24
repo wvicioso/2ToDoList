@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+}
+
+nav {
+  position: absolute;
+  left: 0px;
+  width: 200px;
+}
+
+section {
+  margin_left: 200px;
+
+}
+
+header {
+  
+}
