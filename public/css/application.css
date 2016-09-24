@@ -1,0 +1,11 @@
+body {
+  height: 100%;
+}
+
+.container {
+  max-width: 75%;
+  margin: 20px auto;
+  height: 100%;
+  padding: 20px;
+  border: 1px dotted black;
+}
