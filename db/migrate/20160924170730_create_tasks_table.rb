@@ -3,6 +3,7 @@ class CreateTasksTable < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :description, null: false
       t.boolean :status, default: false
+      t.references :todo_list
 
       t.timestamps(null: false)
     end
