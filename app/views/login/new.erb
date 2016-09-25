@@ -1,0 +1,13 @@
+<section id="login">
+<% if @errors %>
+  <ul><% @errors.each do |error| %>
+    <li><%= error %></li>
+  <% end %></ul>
+<% end %>
+
+<form id="loginForm" action="/login" method="post">
+  <label for="email">Email</label>
+  <input type="text" name="email">
+  <label for="password">Password</label>
+  <input type="password" name="password">
+</form>
