@@ -29,22 +29,27 @@ post '/lists' do
   end
 end
 
-get '/lists/:id' do
-  @list = List.find(params[:id])
-  erb :'lists/show'
+get '/lists/:list_id/tasks' do
+  @list = List.find(params[:list_id])
+  @tasks = @list.tasks
+  erb :'tasks/index'
 end
 
-get '/lists/:id/edit' do
-  @list = List.find(params[:id])
+get '/lists/:list_id/tasks/edit' do
+  @list = List.find(params[:list_id])
   erb :'lists/edit'
 end
 
-put '/lists/:id' do
-  @list = List.find(params[:id])
+put '/lists/:list_id/tasks' do
+  @list = List.find(params[:list_id])
   if @list.update_attributes(params[:list])
-    redirect "/lists/#{@list.id}"
+    redirect "/lists/#{@list.id}/tasks"
   else
     @errors = @list.errors.full_messages
     erb :'lists/edit'
   end
+end
+
+get '/lists/:list_id/tasks/new' do
+
 end

@@ -1,7 +1,0 @@
-<div class="container">
-  <h1><%= @list.name %></h1>
-
-  <% if current_user.id == @list.user.id %>
-    <a href="<%="/lists/#{@list.id}/edit"%>">Edit list name</a>
-  <% end %>
-</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <h1><%= @list.name %></h1>
+
+  <% @tasks.each do |task| %>
+  <div class="single-class"
+    <label><input type="checkbox" checked=false><%= task.description %></label>
+  </div>
+  <% end %>
+
+  <% if current_user.id == @list.user.id %>
+  <form method="get" action="<%="/lists/#{@list.id}/tasks/new"%>">
+    <input type="submit" value="Add new task">
+  </form>
+    <form method="get" action="<%="/lists/#{@list.id}/tasks/edit"%>">
+      <input type="submit" value="Edit list name">
+    </form>
+
+  <% end %>
+</div>
