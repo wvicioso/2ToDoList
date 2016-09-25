@@ -1,4 +1,13 @@
-<h1>Home Page</h1>
-<p>Important shit goes here.</p>
+<div class="container">
+  <h1>Home Page</h1>
+    <h3>List of all users:</h3>
+    <ul>
+      <% @users.each do |user| %>
+        <li> <%= user.username %> </li>
+      <% end %>
+    </ul>
 
-<p>Click <a href="/users/new">here</a> to make a new account.</p>
+      <p>Important shit goes here.</p>
+      <p>Click <a href="/users/new">here</a> to make a new account.</p>
+
+</div>
