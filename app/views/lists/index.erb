@@ -1,0 +1,12 @@
+<div class="container">
+  <ul id="all_lists">
+    <% @lists.each do |list| %>
+      <li><a href="<%= "lists/#{list.id}" %>"><%= list.name %></a></li>
+      <li>Created by <%= list.author %></li>
+    <% end %>
+  </ul>
+</div>
+
+<form method="get" action="/lists/new">
+  <input type="submit" value="Create new list">
+</form>

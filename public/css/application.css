@@ -1,0 +1,29 @@
+label {
+  display: block;
+}
+
+input {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 900px;
+  margin: 20px;
+}
+
+.errors {
+  color: red;
+  font-style:italic;
+  list-style-type: none;
+  padding: 0;
+}
+
+.errors h3 {
+  margin-bottom: 2px;
+}
+
+#all_lists {
+  list-style-type: none
+}
