@@ -9,3 +9,16 @@ post '/lists/:list_id/tasks/new' do
     erb :'list/show'
   end
 end
+
+get '/lists/:list_id/tasks/:task_id/mark' do 
+  task = Task.find_by(id: params[:task_id])
+  task.marked_as_complete = true
+  task.save
+  redirect "/lists/#{params[:list_id]}"
+end
+
+get '/lists/:list_id/tasks/:task_id/delete' do 
+  task = Task.find_by(id: params[:task_id])
+  task.destroy
+  redirect "/lists/#{params[:list_id]}"
+end
