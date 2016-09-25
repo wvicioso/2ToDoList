@@ -1,16 +1,16 @@
-get '/lists' do 
-  @lists = List.all 
+get '/lists' do
+  @lists = List.all
   erb :'list/index'
 end
 
-get '/lists/new' do 
-  erb :'list/new'
-end
-
-post '/lists/new' do 
+post '/lists/new' do
   @list = List.new(user_id: current_user.id, title: params[:title])
   if @list.save
-    redirect "lists/#{@list.id}"
+    if request.xhr?
+      erb :'/share/_list_item', locals: { list: @list }, layout: false
+    else
+      redirect "users/#{current_user.id}"
+    end
   else
     @error = "Please add a title"
     erb :'list/new'

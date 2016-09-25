@@ -28,9 +28,7 @@ end
 get '/lists/:list_id/tasks/:task_id/delete' do
   task = Task.find_by(id: params[:task_id])
   task.destroy
-  if request.xhr?
-    p "this got hit"
-  else
+  unless request.xhr?
     redirect "/lists/#{params[:list_id]}"
   end
 end

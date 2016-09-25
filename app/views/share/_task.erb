@@ -1,0 +1,18 @@
+<li>
+<span>
+<%= task.task_description %>
+</span>
+<% if task.marked_as_complete %>
+    <%= erb :'/share/_check' %>
+<% end %>
+
+<% if logged_in? && current_user.id == @list.user_id %>
+<br>
+
+<% if !task.marked_as_complete %>
+<a class="mark-complete" href="/lists/<%= @list.id %>/tasks/<%= task.id %>/mark">mark as complete</a>
+<% end %>
+
+<a class="task-delete" href="/lists/<%= @list.id %>/tasks/<%= task.id %>/delete">delete</a>
+<% end %>
+</li>

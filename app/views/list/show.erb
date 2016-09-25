@@ -1,10 +1,6 @@
 <h3>List Title: <%= @list.title %></h3>
 
 
-<% if @list.tasks.empty? %>
-  <p>There are currently no tasks in this list</p>
-<% end %>
-
 <ul class="task-list">
 <% @list.tasks.each do |task| %>
     <%= erb :'/share/_task', locals: {task: task}, layout: false %>

@@ -1,13 +1,11 @@
-<h2>Create a new List</h2>
+<h3>Create a new List</h3>
 
 <%= @error if @error %>
-
-<form action="/lists/new" method="POST">
+<form class="new-list" action="/lists/new" method="POST">
   <p>
     <label for="title">Title:</label>
   <br>
     <input type="text" name="title">
   </p>
-
   <input type="submit" value="Create New List">
 </form>

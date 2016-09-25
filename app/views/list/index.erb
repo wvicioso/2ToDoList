@@ -1,12 +1,7 @@
 <h2>Todo Lists</h2>
 
-<% @lists.each do |list| %>
 <ul>
-  <li>
-    <a href="/lists/<%= list.id %>"><%= list.title %></a>
-    <% if logged_in? && current_user.id == list.user_id %>
-      - <a href="">Delete</a>
-    <% end %>
-  </li>
-</ul>
+<% @lists.each do |list| %>
+  <%= erb :'/share/_list_item', locals: { list: list } %>
 <% end %>
+</ul>

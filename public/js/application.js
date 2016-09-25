@@ -38,7 +38,22 @@ $(document).ready(function() {
     }).done( function(response) {
       // debugger;
       $(event.target).parent().hide();
-    })
+    });
+  });
+
+  $(".new-list").submit( function(event) {
+    event.preventDefault();
+    var url=$(this).attr("action");
+    var data = $(this).serialize();
+    //   debugger;
+    $.ajax({
+      url: url,
+      method: "POST",
+      data: data
+    }).done( function(response) {
+      $(".user-list-titles").append(response);
+      $(event.target).children("input").first().val("");
+    });
   });
 
 });
