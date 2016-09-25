@@ -1,0 +1,13 @@
+<% if logged_in? %>
+  <section id="newList">
+    <a href="/lists/new">Create New Todo List</a>
+  </section>
+<% end %>
+
+<section id="listDisplay">
+  <% @lists.each do |list| %>
+    <div class="todoListLink" id="<%=list.id%>">
+      <a href="/lists/<%=list.id%>"><%=list.name%></a>
+    </div>
+  <% end %>
+</section>
