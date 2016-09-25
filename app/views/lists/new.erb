@@ -1,10 +1,4 @@
 <div class="container">
   <h1>Create a new list</h1>
-  <%= erb :'_errors' %>
-  <form method="post" action="/lists">
-    <label>Name of new list:</label>
-    <input type="text" name="name">
-    <input type="submit" value="Create">
-  </form>
-  </form>
+  <%= erb :'lists/_new_list_form' %>
 </div>

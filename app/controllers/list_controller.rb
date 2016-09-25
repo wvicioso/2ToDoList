@@ -4,16 +4,28 @@ get '/lists' do
 end
 
 get '/lists/new' do
-  erb :'lists/new'
+  if request.xhr?
+    erb :'lists/_new_list_form', layout: false
+  else
+    erb :'lists/new'
+  end
 end
 
 post '/lists' do
   list = List.new(name: params[:name], user_id: current_user.id)
   if list.save
-    redirect '/lists'
+    if request.xhr?
+      erb :'lists/_list_item', locals: {list: list}, layout: false
+    else
+      redirect '/lists'
+    end
   else
     @errors = list.errors.full_messages
-    erb :'lists/new'
+    if request.xhr?
+      erb :'_errors'
+    else
+      erb :'lists/new'
+    end
   end
 end
 

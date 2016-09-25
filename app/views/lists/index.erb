@@ -1,12 +1,12 @@
 <div class="container">
-  <ul id="all_lists">
+  <ul id="all-lists">
     <% @lists.each do |list| %>
-      <li><a href="<%= "lists/#{list.id}" %>"><%= list.name %></a></li>
-      <li>Created by <%= list.author %></li>
+      <%= erb :'lists/_list_item', locals: {list: list} %>
     <% end %>
   </ul>
-</div>
+  <%= erb :'_errors' %>
+  <form class="add-list-button" method="get" action="/lists/new">
+    <input type="submit" value="Add a list">
+  </form>
 
-<form method="get" action="/lists/new">
-  <input type="submit" value="Create new list">
-</form>
+</div>
