@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Edit list name</h1>
+  <form class="edit-list-button" method="post" action="<%="/lists/#{@list.id}"%>">
+    <input type="hidden" name="_method" value="put">
+    <label>Name of new list:</label>
+    <input type="text" name="name" value="<%= @list.name %>">
+    <input type="submit" value="Create">
+  </form>
+</div>

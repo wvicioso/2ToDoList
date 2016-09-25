@@ -7,32 +7,38 @@ $(document).ready(function() {
 
   $('.container').on('submit', '.add-list-button', function (event) {
     event.preventDefault();
-    if ($('.create-list-button').length) {
+    if ($('.create-list-form').length) {
       $(event.target).hide();
-      $('.create-list-button').show();
+      $('.container').find('.create-list-form').show();
     } else {
+      var url = $(this).attr('action');
+      var method = $(this).attr('method');
       $.ajax({
-        url: $(event.target).attr('action'),
-        method: $(event.target).attr('method')
-      }).done (function(response) {
-        $(event.target).hide();
+        url: url,
+        method: method
+      }).done( function(response) {
+        $('.add-list-button').hide();
         $(event.target).after(response);
       });
     };
   });
 
-  $('.container').on('submit', '.create-list-button', function (event) {
+  $('.container').on('submit', '.create-list-form', function(event) {
+    var url = $(this).attr('action');
+    var method = $(this).attr('method');
+    var data = $(this).serialize();
     event.preventDefault();
-    var newListData = $(event.target).serialize();
     $.ajax({
-      url: $(event.target).attr('action'),
-      method: $(event.target).attr('method'),
-      data: newListData
-    }).done (function(response) {
+      url: url,
+      method: method,
+      data: data
+    }).done( function(response) {
+      console.log(response);
       $('#all-lists').append(response);
       $(event.target).trigger('reset');
       $(event.target).hide();
       $('.add-list-button').show();
+
     });
   });
 

@@ -1,0 +1,6 @@
+<form class="update-list-button" method="get" action="<%="/lists/#{@list.id}/edit"%>">
+  <input type="hidden" name="_method" value="put">
+  <label>Name of new list:</label>
+  <input type="text" name="name" value="<%= @list.name %>">
+  <input type="submit" value="Create">
+</form>

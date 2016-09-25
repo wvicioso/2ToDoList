@@ -22,7 +22,7 @@ post '/lists' do
   else
     @errors = list.errors.full_messages
     if request.xhr?
-      erb :'_errors'
+      erb :'_errors', layout: false
     else
       erb :'lists/new'
     end
@@ -31,4 +31,13 @@ end
 
 get '/lists/:id' do
   erb :'lists/show'
+end
+
+get 'lists/:id/edit' do
+  @list = List.find(params[:id])
+  erb :'lists/edit'
+end
+
+put 'lists/:id' do
+
 end
