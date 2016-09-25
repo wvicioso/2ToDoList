@@ -29,5 +29,10 @@
   <% end %>
 
 </fieldset>
+<% end %>
 
+<% if @tasks  %>
+  <% @tasks.each do |task| %>
+      <%= erb :'/tasks/_show', locals: { task: task }, layout: false %>
+  <% end %>
 <% end %>

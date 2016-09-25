@@ -3,7 +3,6 @@ get '/lists' do
 end
 
 post '/lists' do
-  binding.pry
   list = List.create(params[:list])
   if list.save
     if request.xhr?
@@ -12,7 +11,6 @@ post '/lists' do
       redirect '/'
     end
   else
-    binding.pry
     @errors = list.errors.full_messages
     erb :'index'
   end
@@ -20,5 +18,6 @@ end
 
 get '/lists/:id' do
   @list = List.find_by(id: params[:id])
+  @tasks = @list.tasks
   erb :'/lists/show'
 end

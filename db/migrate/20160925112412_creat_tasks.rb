@@ -4,7 +4,7 @@ class CreatTasks < ActiveRecord::Migration
       t.references  :list
       t.string  :description, null: false
       t.string  :priority
-      t.date    :due_date
+      t.date    :due_date(null: "Open")
 
       t.timestamps(null: false)
     end
