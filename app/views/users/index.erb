@@ -1,13 +1,17 @@
 <div class="container">
-  <h1>Home Page</h1>
+  <h1>To Do List Web App</h1>
+    <h4>By Neel Gupta</h4>
+
     <h3>List of all users:</h3>
+    
     <ul>
       <% @users.each do |user| %>
-        <li> <%= user.username %> </li>
+        <li> <a href="/users/<%= user.id %>"> <%= user.username %> </a></li>
       <% end %>
     </ul>
 
       <p>Important shit goes here.</p>
       <p>Click <a href="/users/new">here</a> to make a new account.</p>
 
+      <p>Click <a href=""></a></p>
 </div>

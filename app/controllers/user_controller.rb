@@ -18,12 +18,17 @@ post '/users' do
     session[:user_id] = user.id
     redirect '/'
   else
-    redirect '/users'
+    @errors = user.errors.full_messages
+
+    erb :'users/_new_user'
   end
 end
 
 # Specific user
 get '/users/:id' do
+  @user = User.find(params[:id])
+
+  erb :'users/show'
 end
 
 # Edit a user
