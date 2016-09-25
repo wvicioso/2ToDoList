@@ -7,13 +7,17 @@
   </form>
 </div>
 
+<% if @errors %>
+  <% @errors.each do |error| %>
+  <h2> <%= error %> </h2>
+  <% end %>
+<% end %>
+
 <div>
   <h1>Current Users Lists</h1>
   <% if @lists %>
   <% @lists.each do |list| %>
-    <li>
-      <%= list.name %> / <%= list.tasks.count %>
-    </li>
+    <%= erb :'/lists/_list', locals: { list: list }, layout: false %>
     <% end %>
   <% end %>
 </div>
