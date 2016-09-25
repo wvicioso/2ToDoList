@@ -16,7 +16,8 @@ nav {
 }
 
 section {
-  margin-left: 200px;
+  margin-left: 220px;
+  padding-left: 20px;
 }
 
 header {
@@ -30,4 +31,24 @@ header {
   width: 10%;
   margin: auto;
   padding-top: 15px;
+}
+
+#createUser {
+  border: 1px solid black;
+  height: 300px;
+
+}
+
+#newUser {
+  width: 30%;
+  margin: 10px auto;
+}
+
+#newUser label {
+  display: block;
+  padding-top: 5px;
+}
+#newUser input {
+  display: block;
+  margin-top: 5px;
 }
