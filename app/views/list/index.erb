@@ -4,6 +4,9 @@
 <ul>
   <li>
     <a href="/lists/<%= list.id %>"><%= list.title %></a>
+    <% if current_user.id == list.user_id %>
+      - <a href="">Delete</a>
+    <% end %>
   </li>
 </ul>
 <% end %>

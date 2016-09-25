@@ -4,7 +4,10 @@
 
 <ul>
 <% @user.lists.each do |list| %>
-  <li><a href="/lists/<%= list.id %>"><%= list.title %></a></li>
+  <li>
+    <a href="/lists/<%= list.id %>"><%= list.title %></a>
+    - <a href="">Delete</a>
+  </li>
 <% end %>
 </ul>
 
