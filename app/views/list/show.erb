@@ -12,3 +12,13 @@
     </li>
   </ul>
 <% end %>
+
+<%= @error if @error %>
+
+<% if @list.user_id == current_user.id %>
+  <form action="/lists/<%=@list.id %>/tasks/new" method="POST">
+    <label for="task_description">Add a new task:</label>
+    <input type="text" name="task_description">
+    <input type="submit" value="Add new task">
+  </form>
+<% end %>
