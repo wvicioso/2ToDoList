@@ -21,3 +21,11 @@ get '/lists/:list_id' do
   @list = List.find_by(id: params[:list_id])
   erb :'list/show'
 end
+
+get '/lists/:list_id/delete' do
+  list = List.find_by(id: params[:list_id])
+  list.destroy
+  unless request.xhr?
+    redirect "/users/#{current_user.id}"
+  end
+end

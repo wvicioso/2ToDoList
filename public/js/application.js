@@ -56,4 +56,16 @@ $(document).ready(function() {
     });
   });
 
+  $(".user-list-titles").on("click", ".delete-list", function(event) {
+    event.preventDefault();
+    var url=$(event.target).attr("href");
+
+    $.ajax({
+      url: url,
+      method: "GET"
+    }).done( function(response) {
+      $(event.target).parent().hide();
+    })
+  })
+
 });

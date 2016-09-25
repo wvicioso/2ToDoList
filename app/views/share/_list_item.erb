@@ -1,6 +1,6 @@
 <li>
   <a href="/lists/<%= list.id %>"><%= list.title %></a>
   <% if logged_in? && current_user.id == list.user_id %>
-    - <a href="">Delete</a>
+    - <a class="delete-list" href="/lists/<%= list.id %>/delete">Delete</a>
   <% end %>
 </li>
