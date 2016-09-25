@@ -1,0 +1,19 @@
+<h2>Log In</h2>
+
+<%= @error if @error %>
+
+<form action="/login" method="POST">
+  <p>
+    <label for="email">email:</label>
+    <br>
+    <input type="text" name="email">
+  </p>
+  <p>
+    <label for="password">password:</label>
+      <br>
+    <input type="password" name="password">
+  </p>
+  <p>
+    <input type="submit" value="Log In">
+  </p>
+</form>
