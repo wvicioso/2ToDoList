@@ -18,6 +18,22 @@
   <title></title>
 </head>
 <body>
+
+<header>
+  <ul>
+    <li>
+      <a href="/lists">Home</a>
+    </li>
+   <% if !logged_in? %>
+    <li><a href="/login">Log In</a></li>
+    <li><a href="/users/new">Register</a></li>
+    <% else %>
+    <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
+    <li><a href="/logout">Log Out</a></li>
+   <% end %>
+ </ul>
+
+</header>
   <div class="container">
     <%= yield %>
   </div>
