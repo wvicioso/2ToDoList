@@ -1,3 +1,6 @@
-<li>
-  <%= list.name %> / <%= list.tasks.count %>
-</li>
+<div class="list_container">
+  <div class="list_name"><a href="/lists/<%=list.id%>"><%= list.name %></a></div>
+  <div class="list_task_count"><%= list.tasks.count %></div>
+  <div class="list_creator"><%= list.creator %></div>
+  <div class="list_created_date"><%= list.created_at %></div>
+</div>

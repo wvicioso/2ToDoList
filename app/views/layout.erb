@@ -20,9 +20,15 @@
 <body>
   <nav>
     <ul>
-      <li>Welcome!</li>
-      <li><a href="/sessions/new">Create an Account</a></li>
-      <li>Login</li>
+      <% if logged_in? %>
+        <li><a href="/">Welcome, <%= @user.username%>!</a></li>
+        <li><a href="/users/<%= @user.id%>">My Profile</a></li>
+        <li><a href="/sessions/delete">LogOut</a></li>
+      <% else %>
+      <li><a href="/">Welcome!</a></li>
+      <li><a href="/users/new">Create an Account</a></li>
+      <li><a href="/sessions/new">Login</a></li>
+      <% end %>
     </ul>
   </nav>
   <%= yield %>

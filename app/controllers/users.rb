@@ -6,14 +6,22 @@ end
 post '/users' do
   user = User.create(params[:user])
   if user.save
-    session[:user_id] = user.id
     if request.xhr?
       "hello"
     else
-    redirect '/'
+      redirect '/'
     end
   else
     @errors = user.errors.full_messages
-    erb :'/sessions/new'
+    erb :'/users/new'
   end
+end
+
+get '/users/new' do
+  erb :'/users/new'
+end
+
+get '/users/:id' do
+  user = User.find_by(id: params[:id])
+  erb :'/users/show'
 end
