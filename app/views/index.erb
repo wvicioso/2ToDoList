@@ -1,0 +1,19 @@
+<div>
+  <h1>Create a New Todo List</h1>
+  <form method="post" action="/lists">
+    <label>Name:</label>
+    <input type='text' name=list[name] placeholder="Name of List">
+    <input type='submit' value="Create Your List">
+  </form>
+</div>
+
+<div>
+  <h1>Current Users Lists</h1>
+  <% if @lists %>
+  <% @lists.each do |list| %>
+    <li>
+      <%= list.name %> / <%= list.tasks.count %>
+    </li>
+    <% end %>
+  <% end %>
+</div>
