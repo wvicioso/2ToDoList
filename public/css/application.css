@@ -55,10 +55,19 @@ header {
 
 #login {
   border: 1px solid black;
-  height: 300px;
+  height: 200px;
 }
 
 #loginForm {
   width: 30%;
   margin: 10px auto;
+}
+
+#loginForm label {
+  display: block;
+  padding-top: 5px;
+}
+#loginForm input {
+  display: block;
+  margin-top: 5px;
 }

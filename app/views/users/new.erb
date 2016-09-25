@@ -1,9 +1,5 @@
 <section id="createUser">
-<% if @errors %>
-  <ul><% @errors.each do |error| %>
-    <li><%= error %></li>
-  <% end %></ul>
-<% end %>
+<%= erb :'_errors', locals: { errors: @errors } %>
 
 <form id="newUser" action="/users" method="post">
   <label for="user[username]">Username:</label>
