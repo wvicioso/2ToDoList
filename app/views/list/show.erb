@@ -1,5 +1,10 @@
 <h3>List Title: <%= @list.title %></h3>
 
+
+<% if @list.tasks.empty? %>
+  <p>There are currently no tasks in this list</p>
+<% end %>
+
 <% @list.tasks.each do |task| %>
   <ul>
     <li>
