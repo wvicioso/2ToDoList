@@ -1,6 +1,6 @@
 <h2>Todo Lists</h2>
 
-<ul>
+<ul class="user-list-titles">
 <% @lists.each do |list| %>
   <%= erb :'/share/_list_item', locals: { list: list } %>
 <% end %>

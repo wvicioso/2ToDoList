@@ -12,6 +12,7 @@
 <% if !task.marked_as_complete %>
 <a class="mark-complete" href="/lists/<%= @list.id %>/tasks/<%= task.id %>/mark">mark as complete</a>
 <% end %>
+<a href="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">Edit</a>
 
 <a class="task-delete" href="/lists/<%= @list.id %>/tasks/<%= task.id %>/delete">delete</a>
 <% end %>

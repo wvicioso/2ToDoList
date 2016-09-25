@@ -25,6 +25,25 @@ get '/lists/:list_id/tasks/:task_id/mark' do
   end
 end
 
+get '/lists/:list_id/tasks/:task_id/edit' do
+  # @list = List.find_by(id: params[:list_id])
+  @task = Task.find_by(id: params[:task_id])
+  @original_description = @task.task_description
+  erb :'task/edit'
+end
+
+put '/lists/:list_id/tasks/:task_id' do
+  @task = Task.find_by(id: params[:task_id])
+  @original_description = @task.task_description
+  @task.task_description = params[:task_description]
+  if @task.save
+    redirect "/lists/#{@task.list_id}"
+  else
+    @error = "Task description cannot be blank"
+    erb :'task/edit'
+  end
+end
+
 get '/lists/:list_id/tasks/:task_id/delete' do
   task = Task.find_by(id: params[:task_id])
   task.destroy
