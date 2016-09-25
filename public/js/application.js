@@ -1,7 +1,31 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $(".new-task").submit( function(event) {
+    event.preventDefault();
+    var url=$(this).attr("action")
+    var data = $(this).serialize();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    $.ajax({
+      url: url,
+      method: "POST",
+      data: data
+    }).done( function(response) {
+      // debugger;
+      $(".task-list").append(response);
+      $(event.target).children("input").first().val("");
+    });
+  });
+
+  $(".task-list").on("click", ".mark-complete", function(event) {
+    event.preventDefault();
+    var url=$(event.target).attr("href");
+
+    $.ajax({
+      url: url,
+      method: "GET"
+    }).done( function(response) {
+      $(event.target).hide();
+      $(event.target).parent().children("span").append(response);
+    })
+  });
+
 });

@@ -5,31 +5,16 @@
   <p>There are currently no tasks in this list</p>
 <% end %>
 
+<ul class="task-list">
 <% @list.tasks.each do |task| %>
-  <ul>
-    <li>
-    <%= task.task_description %>
-    <% if task.marked_as_complete %>
-        &#10004
-    <% end %>
-
-    <% if current_user.id == @list.user_id %>
-    <br>
-
-    <% if !task.marked_as_complete %>
-    <a href="/lists/<%= @list.id %>/tasks/<%= task.id %>/mark">mark as complete</a>
-    <% end %>
-
-    <a href="/lists/<%= @list.id %>/tasks/<%= task.id %>/delete">delete</a>
-    <% end %>
-    </li>
-  </ul>
+    <%= erb :'/share/_task', locals: {task: task}, layout: false %>
 <% end %>
+</ul>
 
 <%= @error if @error %>
 
-<% if @list.user_id == current_user.id %>
-  <form action="/lists/<%=@list.id %>/tasks/new" method="POST">
+<% if logged_in? && @list.user_id == current_user.id %>
+  <form class="new-task" action="/lists/<%=@list.id %>/tasks/new" method="POST">
     <label for="task_description">Add a new task:</label>
     <input type="text" name="task_description">
     <input type="submit" value="Add new task">
