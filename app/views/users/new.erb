@@ -1,0 +1,12 @@
+<% if @errors %>
+    <% @errors.each do |error_message| %>
+        <p><%= error_message %></p>
+    <% end %>
+<% end %>
+
+<form method="post" action="/users">
+    <input type="text" name="user[username]" placeholder="username">
+    <input type="text" name="user[email]" placeholder="email">
+    <input type="password" name="user[password]" placeholder="password">
+    <input type="submit" value="Submizzle"> 
+</form>

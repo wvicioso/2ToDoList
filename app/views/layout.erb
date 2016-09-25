@@ -18,6 +18,18 @@
   <title></title>
 </head>
 <body>
+  <p>Yooooo</p>
+  <nav>
+    <% if logged_in? %>
+      <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
+      <a href="/logout">Logout</a>
+    <% else %>
+      <a href="/users/new">Register</a>
+      <a href="/users/login">Login</a>
+    <% end %>
+
+    <a href="/">Home</a>
+  </nav>
   <%= yield %>
 </body>
 </html>

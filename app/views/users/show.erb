@@ -1,0 +1,14 @@
+<% if !current_user %>
+    <p>You gotta login to see this dawg.</p>
+<% else %>
+
+    <% if current_user.tasks.count > 0 %>
+        <h3>Your Task List is:</h3>
+        <ul>
+            <% current_user.tasks.each do |task| %>
+                <li><%= task.content %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+<% end %>
