@@ -12,3 +12,12 @@ post '/login' do
     erb :'login/new'
   end
 end
+
+get '/logout' do
+  erb :'login/logout'
+end
+
+post '/logout' do
+  session.clear
+  redirect '/'
+end

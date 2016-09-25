@@ -11,3 +11,7 @@ post '/users' do
     erb :'users/new'
   end
 end
+
+get '/users/:id' do
+  "A profile page, eventually"
+end
