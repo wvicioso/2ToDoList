@@ -1,0 +1,23 @@
+<h2>Hello <%= @user.username %></h2>
+
+<h3>Your current lists:</h3>
+
+<ul>
+<% @user.lists.each do |list| %>
+  <li><a href="/lists/<%= list.id %>"><%= list.title %></a></li>
+<% end %>
+</ul>
+
+<h3>Your completed tasks</h3>
+
+<% @user.marked_lists.each do |list| %>
+<ul>
+  <li> list: <%= list.title %>
+  <% list.true_tasks.each do |task| %>
+  <div>
+    <%= task.task_description %>
+  </div>
+  <% end %>
+  </li>
+</ul>
+<% end %>

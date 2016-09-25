@@ -4,4 +4,9 @@ class List < ActiveRecord::Base
 
   has_many :tasks
   belongs_to :user 
+
+  def true_tasks
+    self.tasks.select { |task| task.marked_as_complete == true } 
+  end
+
 end
