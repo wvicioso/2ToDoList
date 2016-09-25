@@ -1,6 +1,7 @@
-<form class="update-list-button" method="get" action="<%="/lists/#{@list.id}/edit"%>">
-  <input type="hidden" name="_method" value="put">
-  <label>Name of new list:</label>
-  <input type="text" name="name" value="<%= @list.name %>">
-  <input type="submit" value="Create">
-</form>
+<div class="container">
+  <h1><%= @list.name %></h1>
+
+  <% if current_user.id == @list.user.id %>
+    <a href="<%="/lists/#{@list.id}/edit"%>">Edit list name</a>
+  <% end %>
+</div>

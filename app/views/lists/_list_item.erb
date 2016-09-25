@@ -1,2 +1,6 @@
 <li class="list-name"><a href="<%= "lists/#{list.id}" %>"><%= list.name %></a></li>
 <li>Created by <%= list.author %></li>
+<% if current_user.id == list.user.id %>
+  <a href="<%="/lists/#{list.id}/edit"%>">Edit list name</a>
+<% end %>
+</br></br>

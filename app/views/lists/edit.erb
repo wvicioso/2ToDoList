@@ -3,7 +3,7 @@
   <form class="edit-list-button" method="post" action="<%="/lists/#{@list.id}"%>">
     <input type="hidden" name="_method" value="put">
     <label>Name of new list:</label>
-    <input type="text" name="name" value="<%= @list.name %>">
-    <input type="submit" value="Create">
+    <input type="text" name="list[name]" value="<%= @list.name %>">
+    <input type="submit" value="Update">
   </form>
 </div>
