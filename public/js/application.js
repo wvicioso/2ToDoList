@@ -25,6 +25,19 @@ $(document).ready(function() {
     }).done( function(response) {
       $(event.target).hide();
       $(event.target).parent().children("span").append(response);
+    });
+  });
+
+  $(".task-list").on("click", ".task-delete", function(event) {
+    event.preventDefault();
+    var url=$(event.target).attr("href");
+
+    $.ajax ({
+      url: url,
+      method: "GET"
+    }).done( function(response) {
+      // debugger;
+      $(event.target).parent().hide();
     })
   });
 

@@ -19,7 +19,7 @@ get '/lists/:list_id/tasks/:task_id/mark' do
   task.marked_as_complete = true
   task.save
   if request.xhr?
-    erb :'/share/_check', layout: false 
+    erb :'/share/_check', layout: false
   else
     redirect "/lists/#{params[:list_id]}"
   end
@@ -28,5 +28,9 @@ end
 get '/lists/:list_id/tasks/:task_id/delete' do
   task = Task.find_by(id: params[:task_id])
   task.destroy
-  redirect "/lists/#{params[:list_id]}"
+  if request.xhr?
+    p "this got hit"
+  else
+    redirect "/lists/#{params[:list_id]}"
+  end
 end
