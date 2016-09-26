@@ -1,0 +1,9 @@
+<% if @errors %>
+    <% @errors.each do |error_message| %>
+        <p><%= error_message %></p>
+    <% end %>
+<% end %>
+
+<form action="/tasks" method="post">
+    <input type="text" name="content" placeholder="what do you need to do?">
+</form>

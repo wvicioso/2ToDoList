@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(username, password)
     user = User.find_by(username: username)
-    return true if user && user.authenticate(password)
+    return user if user && user.authenticate(password)
     false
   end
 end

@@ -4,9 +4,33 @@ get '/' do
   erb :home
 end
 
-# controlling user sessions
+# TASKS
+
+# new task page
+get '/tasks/new' do
+  erb :'/tasks/new'
+end
+
+# create new task
+post '/tasks' do
+  task = Post.new(content: params[:content], user_id: current_user.id)
+  if task.save
+    redirect '/'
+  else
+    @errors = task.errors.full_messages
+    erb :'/tasks/new'
+end
+
+# USER SESSIONS
+
+# register page
 get '/users/new' do
   erb :'/users/new'
+end
+
+# login page
+get '/users/login' do
+  erb :'/users/login'
 end
 
 # profile page
@@ -31,12 +55,21 @@ post '/users' do
   end
 end
 
-# login page
-get '/users/login' do
-  erb :'/users/login'
-end
 
 # login authentication
 post '/users/login' do
-  if User.authenticate(params[:username])
+  user = User.authenticate(params[:username], params[:password])
+  if user
+    session[:user_id] = user.id
+    redirect '/'
+  else
+    @errors = ["Please correctly enter all fields"]
+    erb :'/users/login'
+  end
 end
+
+
+
+
+
+
