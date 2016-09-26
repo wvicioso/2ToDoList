@@ -1,13 +1,14 @@
 <div class="container">
-  <h1>To Do List Web App</h1>
-    <h4>By Neel Gupta</h4>
-    
+
+
     <% if logged_in? %>
       <p>You're currently logged in as <a href="/users/<%= current_user.id %>"><%= current_user.username %></a></p>
-    <% end %>
 
+      <h4>Click <a href="/users/<%= current_user.id %>/lists">here</a> to view your to do lists.</h4>
 
-    <h3>List of all users:</h3>
+    <% else %>
+
+      <h3>List of all users:</h3>
     
     <ul>
       <% @users.each do |user| %>
@@ -17,9 +18,9 @@
 
       <p>Important shit goes here.</p>
       <p>Click <a href="/users/new">here</a> to make a new account.</p>
-      <br>
-      <br>
-      <br>
-      <p>Click <a href=""></a></p>
+          <br>
+          <br>
+          <br>
 
+    <% end %>
 </div>

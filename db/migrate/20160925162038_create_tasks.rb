@@ -3,6 +3,7 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :title, null: false
       t.string :description, null: false
+      t.string :due_date, null: false
       t.integer :list_id, null: false
 
       t.timestamps

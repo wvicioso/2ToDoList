@@ -1,0 +1,14 @@
+<div class="container">
+    
+  <% if !@lists %>
+    <h1>Your To Do Lists:</h1>
+      <ul>
+        <% @lists.each do |list| %>
+          <li><%= list.title %></li>
+      </ul>
+      <% end %>
+      
+  <% else %>
+    <%= erb :'lists/_list_error' %>
+  <% end %>
+</div>

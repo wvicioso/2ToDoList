@@ -11,5 +11,17 @@
         <li>Username: <%= @user.username %></li><br>
         <li>Email Address: <%= @user.email %></li><br>
       </ul>
-
+  
+  <h3>Here are your To Do Lists:</h3>
+    
+    <ul>
+      <% @lists.each do |list| %>
+        <li><%= list.title %></li>
+      <% end %>
+    </ul>
+    
+    <!-- <form action="/" method="get"> -->
+      <button type="button" name="new_list" value="Create a New List"></button>
+    <!-- </form> -->
+    
 </div>
