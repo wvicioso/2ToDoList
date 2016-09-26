@@ -1,6 +1,5 @@
 <%= erb(:_errors) %>
 
-<% if !logged_in? %>
   <form class="" action="/users" method="post">
     <label for="username">Username:</label><br>
     <input type="username" name="user[username]" value=""><br><br>
@@ -13,4 +12,3 @@
 
     <input type="submit" value="Register">
   </form>
-<% end %>
