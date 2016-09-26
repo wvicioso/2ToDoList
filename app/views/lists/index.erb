@@ -3,12 +3,19 @@
   <% if !@lists %>
     <h1>Your To Do Lists:</h1>
       <ul>
-        <% @lists.each do |list| %>
-          <li><%= list.title %></li>
+          <li><a href="/users/<%= current_user.id %>/lists/<%= @list.id %>"><%= @list.title %></a></li>
       </ul>
-      <% end %>
       
   <% else %>
     <%= erb :'lists/_list_error' %>
   <% end %>
+
+  <%= erb :'lists/_new_list' %>
+  
+  <br>
+  <br>
+
+<!--       <form action="/users/<%= current_user.id %>/lists/new" method="post">
+        <input type="submit" value="Create New List">
+      </form> -->
 </div>
