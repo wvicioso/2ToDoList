@@ -73,7 +73,31 @@ post '/lists/:list_id/tasks' do
 end
 
 delete '/lists/:list_id/tasks/:id' do
+  require_login
   task = Task.find(params[:id])
   task.destroy
   redirect "lists/#{params[:list_id]}/tasks"
+end
+
+get '/lists/:list_id/tasks/:id/edit' do
+  require_login
+  @list = List.find(params[:list_id])
+  @task = Task.find(params[:id])
+  erb :'tasks/edit'
+end
+
+put '/lists/:list_id/tasks/:id' do
+  @list = List.find(params[:list_id])
+  @task = Task.find(params[:id])
+  if params[:status] == "completed"
+    status = true
+  else
+    status = false
+  end
+  if @task.update_attributes(description: params[:description], status: status)
+    redirect "lists/#{params[:list_id]}/tasks"
+  else
+    @errors = task.errors.full_messages
+    erb :'tasks/edit'
+  end
 end

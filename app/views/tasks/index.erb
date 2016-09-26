@@ -29,6 +29,10 @@
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete task">
     </form>
+
+    <form class="edit-task-button" method="get" action="<%="/lists/#{@list.id}/tasks/#{task.id}/edit"%>">
+      <input type="submit" value="Edit task">
+    </form>
   <% end %>
 
   </div>
