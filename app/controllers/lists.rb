@@ -13,6 +13,6 @@ post '/lists' do
 end
 
 get '/lists/:id' do
-  list = List.find(params[:id])
+  @list = List.find(params[:id])
   erb :'lists/show'
 end
