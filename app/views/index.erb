@@ -1,0 +1,13 @@
+<form class="" action="/login" method="post">
+  <input type="text" name="username" placeholder="Username">
+  <input type="password" name="password" placeholder="Password">
+  <input type="submit" value="Sign In">
+</form>
+
+<div class="list-container">
+  <% @lists.each do |list| %>
+    <article id="<%= list.id %>"
+      <h2><%= list.name %></h2>
+    </article>
+  <% end %>
+</div>
