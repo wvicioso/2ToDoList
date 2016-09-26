@@ -2,8 +2,13 @@
   <h1><%= @list.name %></h1>
 
   <% @tasks.each do |task| %>
-  <div class="single-class"
-    <label><input type="checkbox" checked=false><%= task.description %></label>
+  <div class="single-class">
+    <% if task.status == true %>
+      <label><input type="checkbox" checked ><%= task.description %></label>
+    <% else %>
+      <label><input type="checkbox" ><%= task.description %></label>
+    <% end %>
+
   </div>
   <% end %>
 

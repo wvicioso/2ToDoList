@@ -3,4 +3,5 @@ class Task < ActiveRecord::Base
   has_one :user, through: :list
 
   validates :list_id, presence: true
+  validates :description, presence: true
 end

@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Create a new task</h1>
+  <%= erb :'_errors' %>
+  <form class="create-task-form" method="post" action="<%="/lists/#{params[:list_id]}/tasks"%>">
+    <label>New task description:</label>
+    <input type="text" name="description">
+    <label><input type="checkbox" name="status" value="completed" >Check if completed</label>
+    <input type="submit" value="Create new task">
+  </form>
+</div>

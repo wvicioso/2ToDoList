@@ -51,5 +51,21 @@ put '/lists/:list_id/tasks' do
 end
 
 get '/lists/:list_id/tasks/new' do
+  erb :'tasks/new'
+end
 
+post '/lists/:list_id/tasks' do
+  if params[:status] == "completed"
+    status = true
+  else
+    status = false
+  end
+  task = Task.new(description: params[:description], status: status, list_id: params[:list_id])
+  @list = task.list
+  if task.save
+    redirect "lists/#{@list.id}/tasks"
+  else
+    @errors = task.errors.full_messages
+    erb :'tasks/new'
+  end
 end
