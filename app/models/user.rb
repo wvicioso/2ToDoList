@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
 
   has_secure_password
+
+  def uncompleted_tasks
+    self.tasks.select { |task| task.status == false }
+  end
+
+  def completed_tasks
+    self.tasks.select { |task| task.status == true }
+  end
 end

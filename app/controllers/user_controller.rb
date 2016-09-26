@@ -12,3 +12,12 @@ post '/users' do
     erb :'users/new'
   end
 end
+
+get '/users/:username/profile' do
+  @user = User.find_by(username: params[:username])
+  @lists = @user.lists
+  @uncompleted_tasks = @user.uncompleted_tasks
+  @completed_tasks = @user.completed_tasks
+  erb :'users/profile'
+
+end

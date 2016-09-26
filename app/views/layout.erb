@@ -22,7 +22,7 @@
     <nav>
       <ul class="no-bullets no-margin no-padding right">
         <% if logged_in? %>
-          <li class="pipe-separate left"><a href="<%="/users/#{current_user.username}"%>"><%= current_user.username %></a></li>
+          <li class="pipe-separate left"><a href="<%="/users/#{current_user.username}/profile"%>"><%= current_user.username %></a></li>
           <li class="pipe-separate left"><a href="/sessions/logout">logout</a></li>
         <% else %>
           <li class="pipe-separate left"><a href="/users/new">register</a></li>

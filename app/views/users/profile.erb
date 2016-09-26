@@ -1,0 +1,32 @@
+<div class="container">
+<div class="list-header">
+  <h1>My Lists</h1>
+  <ul id="all-lists">
+    <% @lists.each do |list| %>
+      <li class="list-name"><a href="<%= "/lists/#{list.id}/tasks" %>"><%= list.name %></a></li>
+      <li>Created by <%= list.author %></li>
+      <% if current_user == list.user %>
+        <form method="get" action="<%="/lists/#{list.id}/tasks/edit"%>">
+          <input type="submit" value="Edit list name">
+        </form>
+      <% end %>
+      </br></br>
+    <% end %>
+  </ul>
+</div>
+<div class="task-header">
+  <h1>Incomplete Tasks</h1>
+    <% @uncompleted_tasks.each do |task| %>
+      <%= task.description %>
+    </br></br>
+    <% end %>
+</div>
+<div class="task-header">
+  <h1>Completed Tasks</h1>
+    <% @completed_tasks.each do |task| %>
+      <%= task.description %>
+    </br></br>
+    <% end %>
+</div>
+
+</div>

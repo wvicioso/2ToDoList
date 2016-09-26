@@ -71,13 +71,13 @@ input {
 
 .single-task {
   padding: 10px;
-  border-bottom: 1px solid black;
-}
-
-#list-header {
   border-bottom: 1px dashed black;
 }
 
-#task-header {
+.list-header {
+  border-bottom: 1px dashed black;
+}
+
+.task-header {
   border-bottom: 1px dashed black;
 }
