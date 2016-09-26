@@ -76,14 +76,20 @@ delete '/lists/:list_id/tasks/:id' do
   require_login
   task = Task.find(params[:id])
   task.destroy
-  redirect "lists/#{params[:list_id]}/tasks"
+  if !request.xhr?
+    redirect "lists/#{params[:list_id]}/tasks"
+  end
 end
 
 get '/lists/:list_id/tasks/:id/edit' do
   require_login
   @list = List.find(params[:list_id])
   @task = Task.find(params[:id])
-  erb :'tasks/edit'
+  if request.xhr?
+    erb :'tasks/_edit_task'
+  else
+    erb :'tasks/edit'
+  end
 end
 
 put '/lists/:list_id/tasks/:id' do

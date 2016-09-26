@@ -1,0 +1,12 @@
+<form class="update-task-form" method="post" action="<%="/lists/#{@list.id}/tasks/#{@task.id}"%>">
+  <input type="hidden" name="_method" value="put">
+  <label>Update task description:</label>
+  <input type="text" name="description" value="<%="#{@task.description}"%>">
+  <% if @task.status == true %>
+    <input id="task" type="checkbox" name="status" checked value="completed" >
+  <% else %>
+    <input id="task" type="checkbox" name="status" value="completed" >
+      <label for="task">Update status</label>
+  <% end %>
+  <input type="submit" value="Update task">
+</form>

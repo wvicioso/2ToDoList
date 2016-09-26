@@ -26,7 +26,7 @@
 
   <% if current_user == @list.user %>
     <form class="delete-task-button" method="post" action="<%="/lists/#{@list.id}/tasks/#{task.id}"%>">
-      <input type="hidden" name="_method" value="delete">
+      <input class="hidden-method" type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete task">
     </form>
 

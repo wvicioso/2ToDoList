@@ -30,7 +30,7 @@
 
     <% if current_user == task.user %>
       <form class="delete-task-button" method="post" action="<%="/lists/#{task.list.id}/tasks/#{task.id}"%>">
-        <input type="hidden" name="_method" value="delete">
+        <input class="hidden-method" type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete task">
       </form>
 
@@ -57,7 +57,7 @@
 
       <% if current_user == task.user %>
         <form class="delete-task-button" method="post" action="<%="/lists/#{task.list.id}/tasks/#{task.id}"%>">
-          <input type="hidden" name="_method" value="delete">
+          <input class="hidden-method" type="hidden" name="_method" value="delete">
           <input type="submit" value="Delete task">
         </form>
 

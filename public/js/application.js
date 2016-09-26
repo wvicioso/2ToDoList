@@ -42,5 +42,31 @@ $(document).ready(function() {
     });
   });
 
+  $('.container').on('submit', '.delete-task-button', function(event) {
+    event.preventDefault();
+    var url = $(this).attr('action');
+    var method = $(this).find('.hidden-method').attr('value');
+    $.ajax({
+      url: url,
+      method: method
+    }).done( function () {
+    $(event.target).parent().remove();
+  });
+});
+
+$('.container').on('submit', 'edit-task-button', function(event) {
+  event.preventDefault();
+  debugger
+  var url = $(this).attr('action');
+  var method = $(this).attr('method');
+  $.ajax({
+    url: url,
+    method: method
+  }).done( function (response) {
+    $(event.target).hide();
+    $(event.target).after(response);
+  })
+})
+
 
 });
