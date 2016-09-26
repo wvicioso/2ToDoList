@@ -1,4 +1,4 @@
-get '/sessions/new' do
+get '/sessions/login' do
   erb :'sessions/new'
 end
 
@@ -11,4 +11,9 @@ post '/sessions' do
     @errors = ["Invalid login, please try again"]
     erb :'sessions/new'
   end
+end
+
+get '/sessions/logout' do
+  session.delete(:user_id)
+  redirect '/'
 end

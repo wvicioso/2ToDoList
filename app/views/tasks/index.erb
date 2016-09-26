@@ -1,18 +1,8 @@
 <div class="container">
+  <div id="task-header">
   <h1><%= @list.name %></h1>
 
-  <% @tasks.each do |task| %>
-  <div class="single-class">
-    <% if task.status == true %>
-      <label><input type="checkbox" checked ><%= task.description %></label>
-    <% else %>
-      <label><input type="checkbox" ><%= task.description %></label>
-    <% end %>
-
-  </div>
-  <% end %>
-
-  <% if current_user.id == @list.user.id %>
+  <% if current_user == @list.user %>
   <form method="get" action="<%="/lists/#{@list.id}/tasks/new"%>">
     <input type="submit" value="Add new task">
   </form>
@@ -21,4 +11,28 @@
     </form>
 
   <% end %>
+</div>
+
+  <% @tasks.each do |task| %>
+  <div class="single-task">
+  <% if current_user == @list.user %>
+    <% if task.status == true %>
+      <input type="checkbox" id="task" checked >
+    <% else %>
+      <input type="checkbox" id="task" >
+    <% end %>
+  <% end %>
+      <label for="task"><%= task.description %></label>
+
+  <% if current_user == @list.user %>
+    <form class="delete-task-button" method="post" action="<%="/lists/#{@list.id}/tasks/#{task.id}"%>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete task">
+    </form>
+  <% end %>
+
+  </div>
+  <% end %>
+
+
 </div>

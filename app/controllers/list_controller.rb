@@ -1,5 +1,5 @@
 get '/lists' do
-  @lists = List.all
+  @lists = List.all.order('created_at desc')
   erb :'lists/index'
 end
 
@@ -36,6 +36,7 @@ get '/lists/:list_id/tasks' do
 end
 
 get '/lists/:list_id/tasks/edit' do
+  require_login
   @list = List.find(params[:list_id])
   erb :'lists/edit'
 end
@@ -51,6 +52,7 @@ put '/lists/:list_id/tasks' do
 end
 
 get '/lists/:list_id/tasks/new' do
+  require_login
   erb :'tasks/new'
 end
 
@@ -68,4 +70,10 @@ post '/lists/:list_id/tasks' do
     @errors = task.errors.full_messages
     erb :'tasks/new'
   end
+end
+
+delete '/lists/:list_id/tasks/:id' do
+  task = Task.find(params[:id])
+  task.destroy
+  redirect "lists/#{params[:list_id]}/tasks"
 end

@@ -34,7 +34,7 @@ $(document).ready(function() {
       data: data
     }).done( function(response) {
       console.log(response);
-      $('#all-lists').append(response);
+      $('#all-lists').prepend(response);
       $(event.target).trigger('reset');
       $(event.target).hide();
       $('.add-list-button').show();

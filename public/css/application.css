@@ -1,10 +1,25 @@
+body {
+  width: 900px;
+  padding: 20px;
+}
+
+#header {
+  border-bottom: 2px dotted black;
+}
+
+#header h1 {
+  margin: 0;
+  font-size: 48px;
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+
 input {
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
 .container {
-  width: 900px;
+  width: 800px;
   margin: 20px;
 }
 
@@ -20,5 +35,45 @@ input {
 }
 
 #all-lists {
-  list-style-type: none
+  list-style: none;
+  padding-left: 0;
+}
+
+.pipe-separate {
+  padding-left: 1em;
+  padding-right: 1em;
+  border-right: 1px solid;
+}
+
+.no-bullets {
+  list-style-type: none;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.no-border {
+  border: none;
+}
+
+.single-task {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+#task-header {
+  border-bottom: 1px solid black;
 }

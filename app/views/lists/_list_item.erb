@@ -1,6 +1,6 @@
 <li class="list-name"><a href="<%= "lists/#{list.id}/tasks" %>"><%= list.name %></a></li>
 <li>Created by <%= list.author %></li>
-<% if current_user.id == list.user.id %>
+<% if current_user == list.user %>
   <form method="get" action="<%="/lists/#{list.id}/tasks/edit"%>">
     <input type="submit" value="Edit list name">
   </form>
