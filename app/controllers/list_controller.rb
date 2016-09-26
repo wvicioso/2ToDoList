@@ -86,7 +86,7 @@ get '/lists/:list_id/tasks/:id/edit' do
   @list = List.find(params[:list_id])
   @task = Task.find(params[:id])
   if request.xhr?
-    erb :'tasks/_edit_task'
+    erb :'tasks/_edit_task', layout: false
   else
     erb :'tasks/edit'
   end

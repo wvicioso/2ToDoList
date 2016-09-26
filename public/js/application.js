@@ -54,9 +54,8 @@ $(document).ready(function() {
   });
 });
 
-$('.container').on('submit', 'edit-task-button', function(event) {
+$('.container').on('submit', '.edit-task-button', function(event) {
   event.preventDefault();
-  debugger
   var url = $(this).attr('action');
   var method = $(this).attr('method');
   $.ajax({
