@@ -1,5 +1,8 @@
 get '/' do
   @lists = List.all
+  if logged_in?
+    @user_lists = current_user.lists
+  end
   erb :'index'
 end
 

@@ -4,3 +4,8 @@
   <div class="list_creator"><%= list.creator %></div>
   <div class="list_created_date"><%= list.created_at %></div>
 </div>
+
+<form class="delete_list_form" method="post" action="/lists/<%=list.id%>">
+  <input type="hidden" name="_method" value="delete">
+  <input type='submit' value="Delete List">
+</form>

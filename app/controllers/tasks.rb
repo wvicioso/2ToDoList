@@ -1,6 +1,5 @@
 post '/tasks' do
   task = Task.create(params[:task])
-  binding.pry
   if task.save
     redirect "/lists/#{task.list_id}"
   else
@@ -16,7 +15,6 @@ get '/tasks/:id/edit' do
 end
 
 put '/tasks/:id' do
-  binding.pry
   @task = Task.find_by(id: params[:id])
   @task.update_attributes(params[:task])
   @list = @task.list

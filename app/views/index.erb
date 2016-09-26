@@ -1,10 +1,10 @@
 <% if logged_in? %>
-  <div>
+  <div class="create_list_container">
     <h1>Create a New Todo List</h1>
-    <form method="post" action="/lists">
+    <form class="new_list_form" method="post" action="/lists">
       <label>Name:</label>
       <input type='text' name=list[name] placeholder="Name of List">
-      <input type="hidden" name=list[creator_id] value="<%=@user.id%>"">
+      <input type="hidden" name=list[creator_id] value="<%=@user.id%>">
       <input type='submit' value="Create Your List">
     </form>
   </div>
@@ -17,10 +17,10 @@
 
 <% end %>
 
-<div>
+<div class="users_lists">
   <h1>Current Users Lists</h1>
-  <% if @lists %>
-  <% @lists.each do |list| %>
+  <% if @user_lists %>
+  <% @user_lists.each do |list| %>
     <%= erb :'/lists/_list', locals: { list: list }, layout: false %>
     <% end %>
   <% end %>
