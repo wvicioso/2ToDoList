@@ -1,6 +1,25 @@
 <div class="task_container">
-  <div class="task_description"><%= task.description %></div>
-  <div class="task_priority"><%= task.priority %></div>
-  <div class="task_due_date"><%= task.due_date %></div>
-  <div class="task_status"><%= task.status %></div>
+  <h3 class="task_description"><%= task.description %></h3>
+  <h3 class="task_priority"><%= task.priority %></h3>
+  <h3 class="task_due_date"><%= task.due_date %></h3>
+  <h3 class="task_status"><%= task.status %></h3>
 </div>
+
+<% if owns_list?(task.list) %>
+
+  <form method="get" action="/tasks/<%=task.id%>/edit">
+    <input type='submit' value="Edit Task">
+  </form>
+
+  <form method="post" action="/tasks/<%=task.id%>">
+    <input type="hidden" name="_method" value="put">
+    <input type='submit' value="Mark as Complete">
+  </form>
+
+
+  <form method="post" action="/tasks/<%=task.id%>">
+    <input type="hidden" name="_method" value="delete">
+    <input type='submit' value="Delete Item from List">
+  </form>
+
+<% end %>

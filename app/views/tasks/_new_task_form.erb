@@ -1,0 +1,31 @@
+<fieldset class="add_task_form">
+  <form method="post" action="/tasks">
+
+    <label>Task Description:</label>
+    <input type='text' name=task[description] placeholder="Task Description">
+    <br>
+
+    <label>Priority:</label>
+      <select>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <br>
+
+      <label>Due Date:</label>
+      <input type='date' name=task[due_date] placeholder="Due Date">
+      <br>
+
+      <input type='hidden' name=task[list_id] value="<%=list.id%>">
+      <br>
+    <input type='submit' value="Submit to List">
+  </form>
+
+  <% if @errors %>
+    <% @errors.each do |error| %>
+    <h2> <%= error %> </h2>
+    <% end %>
+  <% end %>
+
+</fieldset>

@@ -21,3 +21,8 @@ get '/lists/:id' do
   @tasks = @list.tasks
   erb :'/lists/show'
 end
+
+get '/lists/:id/edit' do
+  @list = List.find_by(id: params[:id])
+  erb :'/lists/edit'
+end

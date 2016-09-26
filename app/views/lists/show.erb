@@ -1,34 +1,12 @@
 <%= erb :'/lists/_list', locals: { list: @list }, layout: false %>
 
 <% if owns_list?(@list) %>
-<h3>Add a Task to <%= @list.name %>:</h3>
-<fieldset>
-  <form method="post" action="/tasks">
-    <label>Task:</label>
-    <input type='text' name=task[description] placeholder="Task">
-    <br>
-
-    <label>Priority:</label>
-    <input type='text' name=task[priority] placeholder="Priority">
-    <br>
-
-    <label>Due Date:</label>
-    <input type='date' name=task[due_date] placeholder="Due Date">
-    <br>
-
-    <input type='hidden' name=task[list_id] value="<%= @list.id %>">
-    <br>
-
-    <input type='submit' value="Add Task to List">
+  <h3>Add a Task to <%= @list.name %>:</h3>
+  <form method="get" action="/lists/<%=@list.id%>/edit">
+    <input type='submit' value="Edit List">
   </form>
-
-  <% if @errors %>
-    <% @errors.each do |error| %>
-    <h2> <%= error %> </h2>
-    <% end %>
-  <% end %>
-
-</fieldset>
+  </br>
+  <%= erb :'/tasks/_new_task_form', locals: { list: @list, task: @task }, layout: false %>
 <% end %>
 
 <% if @tasks  %>

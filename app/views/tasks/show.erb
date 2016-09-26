@@ -1,0 +1,5 @@
+<div>
+  <h1>Edit the Task for the list, "<%=@list.name%>"</h1>
+</div>
+
+<%= erb :'/tasks/_edit_task_form', locals: { list: @list, task: @task }, layout: false %>
