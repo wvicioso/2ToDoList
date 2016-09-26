@@ -1,3 +1,7 @@
+get '/register' do
+  erb :'users/register'
+end
+
 post '/users' do
   user = User.new(params[:user])
   if user.save
@@ -5,7 +9,7 @@ post '/users' do
     redirect  '/'
   else
     @errors = user.errors.full_messages
-    erb :index
+    erb :'users/register'
   end
 end
 

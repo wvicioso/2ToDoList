@@ -1,10 +1,74 @@
+body {
+  counter-reset:section;
+  background-color: #F6F6EF;
+  font-family: Verdana;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .container {
   margin: 20px auto;
-  width: 600px;
-  padding: 20px;
-  border: 1px dotted black;
+  max-width: 600px;
+  padding: 5px 20px 20px 20px;
+  background-color: #fff;
+  /*border: 1px dotted black;*/
+}
+
+.logged-in-title {
+  margin-bottom: 0;
+}
+
+.new-list-link {
+  margin-top: 0;
 }
 
 .errors {
   color: red;
+}
+
+article {
+  margin: 5px 5px;
+}
+
+article h2 {
+  display: inline;
+  font-size: 10pt;
+}
+
+article:before {
+  counter-increment: section;
+  color: #8C8C8C;
+  font-size: 10pt;
+  content: counter(section) ". ";
+}
+
+article h2 a {
+  text-decoration: none;
+  color: black;
+}
+
+article p {
+  color: #8C8C8C;
+  font-size: 7pt;
+  margin: 3px 30px;
+}
+
+article p span.username:before {
+  content: ' by ';
+}
+
+article p span.username:after {
+  content: ' | ';
+}
+
+article p span.timestamp:before {
+  content: ' created ';
+}
+
+article p span.task-count:before {
+  content: ' | ';
+}
+
+article p span.task-count:after {
+  content: ' tasks | ';
 }

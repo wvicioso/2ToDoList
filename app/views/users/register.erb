@@ -1,0 +1,16 @@
+<%= erb(:_errors) %>
+
+<% if !logged_in? %>
+  <form class="" action="/users" method="post">
+    <label for="username">Username:</label><br>
+    <input type="username" name="user[username]" value=""><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" name="user[email]" value=""><br><br>
+
+    <label for="">Password:</label><br>
+    <input type="password" name="user[password]" value=""><br><br>
+
+    <input type="submit" value="Register">
+  </form>
+<% end %>
