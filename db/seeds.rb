@@ -10,13 +10,17 @@ users = []
 lists = []
 
 20.times {
-  
+  lists << List.create!(
+    name: Faker::Book.title,
+    user: users.sample
+  )
 }
 
 tasks = []
 
 50.times {
   tasks << Task.create!(
-    name: (Faker::Hacker.verb + " " + Faker::Hacker.noun + " " + "for " + Faker::App.author).capitalize
+    description: Faker::Hacker.say_something_smart,
+    list: lists.sample
   )
 }
