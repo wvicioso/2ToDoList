@@ -1,15 +1,41 @@
-get '/users/new' do
+get '/register' do
+  if logged_in?
+    direct '/'
+  else
+    erb :'users/new'
+  end
+end
 
+post '/register' do
+  user = User.new(params[:user])
+  if user.save
+    session[:user_id] = user.id
+    redirect '/'
+  end
 end
 
 get '/login' do
-  redirect '/users/:id'
+  if logged_in?
+    redirect '/'
+  else
+    erb :'users/login'
+  end
 end
 
 post '/login' do
-  redirect '/users/:id'
+  user.find_by(email: params[:user][:email])
+  if user && user.authenticate(params[:user][:password])
+    session[:user_id] = user.id
+    redirect '/'
+  else
+    @errors = ["Invalid email or password"]
+    erb :'users/login'
+  end
 end
 
 get '/logout' do
-
+  if logged_in?
+    session.clear
+  end
+    redirect '/'
 end
