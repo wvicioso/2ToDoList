@@ -1,6 +1,7 @@
 <div class="container">
 <div class="list-header">
   <h1>My Lists</h1>
+</div>
   <ul id="all-lists">
     <% @lists.each do |list| %>
       <li class="list-name"><a href="<%= "/lists/#{list.id}/tasks" %>"><%= list.name %></a></li>
@@ -13,20 +14,60 @@
       </br></br>
     <% end %>
   </ul>
-</div>
 <div class="task-header">
   <h1>Incomplete Tasks</h1>
-    <% @uncompleted_tasks.each do |task| %>
-      <%= task.description %>
-    </br></br>
-    <% end %>
 </div>
+    <% @uncompleted_tasks.each do |task| %>
+    <div class="single-task">
+    <% if current_user == task.user %>
+      <% if task.status == true %>
+        <input type="checkbox" id="task" checked >
+      <% else %>
+        <input type="checkbox" id="task" >
+      <% end %>
+    <% end %>
+        <label for="task"><%= task.description %></label>
+
+    <% if current_user == task.user %>
+      <form class="delete-task-button" method="post" action="<%="/lists/#{task.list.id}/tasks/#{task.id}"%>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete task">
+      </form>
+
+      <form class="edit-task-button" method="get" action="<%="/lists/#{task.list.id}/tasks/#{task.id}/edit"%>">
+        <input type="submit" value="Edit task">
+      </form>
+    <% end %>
+
+    </div>
+    <% end %>
 <div class="task-header">
   <h1>Completed Tasks</h1>
-    <% @completed_tasks.each do |task| %>
-      <%= task.description %>
-    </br></br>
-    <% end %>
 </div>
+    <% @completed_tasks.each do |task| %>
+      <div class="single-task">
+      <% if current_user == task.user %>
+        <% if task.status == true %>
+          <input type="checkbox" id="task" checked >
+        <% else %>
+          <input type="checkbox" id="task" >
+        <% end %>
+      <% end %>
+          <label for="task"><%= task.description %></label>
+
+      <% if current_user == task.user %>
+        <form class="delete-task-button" method="post" action="<%="/lists/#{task.list.id}/tasks/#{task.id}"%>">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete task">
+        </form>
+
+        <form class="edit-task-button" method="get" action="<%="/lists/#{task.list.id}/tasks/#{task.id}/edit"%>">
+          <input type="submit" value="Edit task">
+        </form>
+      <% end %>
+
+      </div>
+    <% end %>
+
 
 </div>

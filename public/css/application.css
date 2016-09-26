@@ -71,13 +71,16 @@ input {
 
 .single-task {
   padding: 10px;
-  border-bottom: 1px dashed black;
+  border-bottom: 1px dashed #666666;
 }
 
 .list-header {
-  border-bottom: 1px dashed black;
+  background-color: #cccccc;
+  padding: 10px;
 }
 
 .task-header {
-  border-bottom: 1px dashed black;
+  background-color: #cccccc;
+  padding: 10px;
+
 }
