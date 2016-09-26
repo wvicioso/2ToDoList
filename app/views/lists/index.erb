@@ -1,9 +1,12 @@
 <div class="container">
-  <% if logged_in? %>
-    <form class="add-list-button" method="get" action="/lists/new">
-      <input type="submit" value="Add a list">
-    </form>
-  <% end %>
+  <div id="list-header">
+  <h1>A bunch of lists</h1>
+    <% if logged_in? %>
+      <form class="add-list-button" method="get" action="/lists/new">
+        <input type="submit" value="Add new list">
+      </form>
+    <% end %>
+  </div>
   <ul id="all-lists">
     <% @lists.each do |list| %>
       <%= erb :'lists/_list_item', locals: {list: list} %>

@@ -74,6 +74,10 @@ input {
   border-bottom: 1px solid black;
 }
 
+#list-header {
+  border-bottom: 1px dashed black;
+}
+
 #task-header {
-  border-bottom: 1px solid black;
+  border-bottom: 1px dashed black;
 }

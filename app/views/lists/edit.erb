@@ -1,5 +1,6 @@
 <div class="container">
   <h1>Edit list name</h1>
+  <%= erb :'_errors' %>
   <form class="edit-list-button" method="post" action="<%="/lists/#{@list.id}/tasks"%>">
     <input type="hidden" name="_method" value="put">
     <label>Name of new list:</label>

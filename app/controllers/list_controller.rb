@@ -97,7 +97,7 @@ put '/lists/:list_id/tasks/:id' do
   if @task.update_attributes(description: params[:description], status: status)
     redirect "lists/#{params[:list_id]}/tasks"
   else
-    @errors = task.errors.full_messages
+    @errors = @task.errors.full_messages
     erb :'tasks/edit'
   end
 end
