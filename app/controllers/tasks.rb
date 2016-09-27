@@ -14,3 +14,9 @@ post '/lists/:id/tasks/new' do
     erb :'tasks/new'
   end
 end
+
+get '/tasks/:id' do
+  task = Task.find(params[:id])
+  task.update(status: true)
+  redirect "/lists/#{task.list_id}"
+end

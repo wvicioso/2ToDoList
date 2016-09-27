@@ -29,7 +29,6 @@ post '/login' do
 end
 
 get '/users/:id' do
-  # binding.pry
   @user = User.find(params[:id])
   @lists = @user.lists.order('created_at desc')
   erb :'users/show'

@@ -14,6 +14,7 @@ end
 
 get '/lists/:id' do
   @list = List.find(params[:id])
+  @tasks = @list.tasks.order('created_at desc')
   erb :'lists/show'
 end
 

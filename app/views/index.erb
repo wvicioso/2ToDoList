@@ -9,9 +9,9 @@
 <div class="list-container">
   <% @lists.each do |list| %>
     <article id="<%= list.id %>">
-      <h2><a href="#"><%= list.title %></a></h2>
+      <h2><a href="/lists/<%= list.id %>"><%= list.title %></a></h2>
       <p>
-        <span class="username"><%= list.user.username %></span>
+        <span class="username"><a href="/users/<%= list.user.id %>"><%= list.user.username %></a></span>
         <span class="timestamp"><%= "#{long_form_date(list.created_at)}" %></span>
         <span class="task-count"><%= list.tasks.count %></span>
       </p>

@@ -1,1 +1,19 @@
-yo
+<h2><%= @list.title %></h2>
+<div class="list-container">
+  <% @tasks.each do |task| %>
+    <article id="<%= task.id %>">
+      <% if task.completed? %>
+        <input type="checkbox" checked="checked" disabled="">
+        <h2 class="marked-complete"><%= task.description %></h2>
+      <% else %>
+        <h2><%= task.description %></h2>
+      <% end %>
+      <p>
+        <span class="timestamp"><%= "#{long_form_date(task.created_at)}" %></span>
+        <% if !task.completed? && task.list.user == current_user %>
+          <a class="update-task" href="/tasks/<%= task.id %>">Mark complete</a>
+        <% end %>
+      </p>
+    </article>
+  <% end %>
+</div>

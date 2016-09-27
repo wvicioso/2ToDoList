@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // delete list
   $('.delete-list').click(function(event) {
       event.preventDefault();
 
@@ -12,5 +13,5 @@ $(document).ready(function() {
        .done(function() {
          $current_list.remove();
        })
-  })
+  });
 });
