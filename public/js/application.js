@@ -33,13 +33,13 @@ $(document).ready(function() {
       method: method,
       data: data
     }).done( function(response) {
+        $('#all-lists').prepend(response);
+        $(event.target).trigger('reset');
+        $(event.target).hide();
+        $('.add-list-button').show();
+    }).fail( function (response) {
       console.log(response);
-      $('#all-lists').prepend(response);
-      $(event.target).trigger('reset');
-      $(event.target).hide();
-      $('.add-list-button').show();
-
-    });
+    })
   });
 
   $('.container').on('submit', '.delete-task-button', function(event) {

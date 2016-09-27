@@ -22,7 +22,7 @@ post '/lists' do
   else
     @errors = list.errors.full_messages
     if request.xhr?
-      erb :'_errors', layout: false
+      halt 422, "There was an error!"
     else
       erb :'lists/new'
     end
