@@ -150,3 +150,13 @@ label {
   display: block;
 }
 
+#taskDelete {
+  height:; 100px;
+}
+
+#deleteButton {
+  height: 10%;
+  width: 10%;
+  margin: 35px auto;
+}
+

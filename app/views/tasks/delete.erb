@@ -1,0 +1,8 @@
+<section id="taskDelete">
+
+  <form id="deleteButton" action="/lists/<%=@list.id%>/tasks/<%=@task.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete task">
+  </form>
+
+</section>

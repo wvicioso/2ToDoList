@@ -71,3 +71,16 @@ put '/lists/:list_id/tasks/:id' do
   Task.update(@task.id, description: params[:description])
   redirect "/lists/#{@list.id}"
 end
+
+get '/lists/:list_id/tasks/:id/delete' do
+  @list = TodoList.find_by(id: params[:list_id])
+  @task = Task.find_by(id: params[:id])
+  erb :'tasks/delete'  
+end
+
+delete '/lists/:list_id/tasks/:id' do
+  @list = TodoList.find_by(id: params[:list_id])
+  @task = Task.find_by(id: params[:id])
+  @task.destroy
+  redirect "/lists/#{@list.id}"
+end
