@@ -93,12 +93,13 @@ label {
 }
 
 .todoListLink a{
+
   text-align: center;
   display: block;
-  font-family: Futura; 
   width:  50%;
   margin: auto;
-  font-size: 110%;
+  font-size: 120%;
+  text-decoration: none;
 }
 
 #newList {
