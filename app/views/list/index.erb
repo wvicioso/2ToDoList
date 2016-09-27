@@ -1,0 +1,7 @@
+<h2>Current Lists</h2>
+
+<ul>
+  <% @lists.each do |list| %>
+    <li><a href="/lists/<%= list.id %>"><%= list.title %></a></li>
+  <% end %>
+</ul>
