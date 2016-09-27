@@ -5,9 +5,21 @@
 <div class="">
   <% @lists.each do |list| %>
     <article id="<%= list.id %>">
-      <h3 class="profile-list-title"><%= list.title %></h3>
-      <span><a href="/lists/<%= list.id %>/edit">Edit</a> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
-      <span><a class="delete-list" href="/lists/<%= list.id %>">Delete</a> <i class="fa fa-trash" aria-hidden="true"></i></span>
+      <% if !logged_in? %>
+      <h2 class="profile-list-title"><%= list.title %></h2>
+      <p>
+        <span class="timestamp"><%= "#{long_form_date(list.created_at)}" %></span>
+        <span class="task-count"><%= list.tasks.count %></span>
+      </p>
+      <% elsif logged_in? && list.user == current_user %>
+        <h2 class="profile-list-title"><%= list.title %></h2>
+        <span><a href="/lists/<%= list.id %>/edit">Edit</a> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+        <span><a class="delete-list" href="/lists/<%= list.id %>">Delete</a> <i class="fa fa-trash" aria-hidden="true"></i></span>
+        <p>
+          <span class="timestamp"><%= "#{long_form_date(list.created_at)}" %></span>
+          <span class="task-count"><%= list.tasks.count %></span>
+        </p>
+      <% end %>
     </article>
   <% end %>
 </div>

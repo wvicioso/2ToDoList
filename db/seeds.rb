@@ -13,7 +13,7 @@ lists = []
           )
 }
 statuses = %w(complete incomplete)
-200.times {
+300.times {
           Task.create!(description: Faker::Hacker.say_something_smart,
                         status: statuses.sample,
                         list: lists.sample
