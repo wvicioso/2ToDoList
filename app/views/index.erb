@@ -1,3 +1,10 @@
+<% if !logged_in?%>
+  <h1>Lists</h1>
+<% elsif logged_in?%>
+  <h1>Lists</h1>
+  <div><a href="/lists/new">Create New List</a></div>
+<% end %>
+
 <div>
   <% @lists.each do |list| %>
     <article id="<%= list.id %>"
