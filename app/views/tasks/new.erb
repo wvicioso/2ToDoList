@@ -1,0 +1,17 @@
+<h2><%= @list.title %></h2>
+
+<%= erb(:_errors) %>
+
+<form class="" action="/lists/<%= @list.id %>/tasks/new" method="post">
+  <label for="description">Description:</label><br>
+  <textarea name="task[description]" rows="5" cols="40"></textarea><br><br>
+
+  <label for="status">Status:</label>
+  <select class="" name="task[status]">
+    <option value="--">--</option>
+    <option value="completed">Completed</option>
+    <option value="incomplete">Incomplete</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Add">
+</form>
