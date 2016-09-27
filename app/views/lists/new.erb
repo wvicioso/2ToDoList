@@ -1,0 +1,8 @@
+<section id="newList">
+  <%= erb :'_errors', locals: {errors: @errors} %>
+  <form id="newListForm" action="/lists" method="post">
+    <label>Enter your new list's title: </label>
+    <input type="text" name="todolist[name]">
+    <input type="submit" value="Create">
+  </form>
+</section>
