@@ -5,7 +5,7 @@
   <input type="hidden" name="_method" value="put">
     <% @tasks.each do |task| %>
       <div id="<%= task.id %>" class="taskDisplay">
-        <input type="checkbox" name="<%= task.id %>"
+        <input class="checkbox" type="checkbox" name="<%= task.id %>"
         <% if task.complete? %>
           checked
         <% end %>
@@ -13,6 +13,7 @@
         <label for="<%= task.id %>"><%= task.description %></label>
       </div>
     <% end %>
-    <input type="submit" value="Complete items">
+    <a href="/list/<%=@list.id%>/tasks/new">Add new task</a>
+    <input id="completeButton" type="submit" value="Complete items">
   </form>
 </section>

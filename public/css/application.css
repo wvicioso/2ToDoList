@@ -126,7 +126,8 @@ label {
   display: inline-block;
 }
 
-#tasks input {
+
+.checkbox {
   display: inline-block;
 }
 
@@ -138,5 +139,14 @@ label {
   font-size: 70%;
   margin-left: 10px;
   display: inline;
+}
+
+#tasks a {
+  font-size: 80%;
+}
+
+#completeButton {
+  margin-top: 8px;
+  display: block;
 }
 
