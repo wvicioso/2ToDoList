@@ -1,10 +1,9 @@
 get '/register' do
-  # if logged_in?
-  #   direct '/'
-  # else
-  #   erb :'users/new'
-  # end
-  erb :'users/register'
+  if logged_in?
+    direct '/'
+  else
+    erb :'users/register'
+  end
 end
 
 post '/users' do
@@ -19,12 +18,11 @@ post '/users' do
 end
 
 get '/login' do
-  # if logged_in?
-  #   redirect '/'
-  # else
-  #   erb :'users/login'
-  # end
+  if logged_in?
+    redirect '/'
+  else
     erb :'users/login'
+  end
 end
 
 post '/login' do
@@ -39,10 +37,8 @@ post '/login' do
 end
 
 get '/logout' do
-  # if logged_in?
-  #   session.clear
-  # end
-  #   redirect '/'
-  session.clear
-  redirect '/'
+  if logged_in?
+    session.clear
+  end
+    redirect '/'
 end

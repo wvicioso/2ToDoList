@@ -1,0 +1,7 @@
+<%= erb(:_errors) %>
+
+<h2>Create Task</h2>
+<form action="/lists/<%= @list.id %>/tasks" method="post">
+  <input type="text" name="task[description]" placeholder="Task Description">
+  <input type="submit" value="Create Task">
+</form>

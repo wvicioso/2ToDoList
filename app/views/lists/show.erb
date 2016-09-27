@@ -1,9 +1,13 @@
 <h1><%= @list.name %></h1>
-
-<h3>Tasks:</h3>
+<% if !logged_in? %>
+  <h3>Tasks</h3>
+<% elsif logged_in? %>
+  <h3>Tasks</h3>
+  <div><a href="/lists/<%= @list.id %>/tasks/new">Create New Task</a></div>
+<% end %>
 
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= task.description %></li>
+    <li><a href="/tasks/<%= task.id %>"><%= task.description %></a></li>
   <% end %>
 </ul>

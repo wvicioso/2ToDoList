@@ -1,5 +1,9 @@
 get '/lists/new' do
-  erb :'lists/new'
+  if !logged_in?
+    redirect '/'
+  else
+    erb :'lists/new'
+  end
 end
 
 post '/lists' do
