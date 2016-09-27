@@ -21,7 +21,11 @@ $(document).ready(function() {
       data: data
     })
     request.done(function(response) {
+      $('#newListForm').remove();
       $('#listDisplay').append(response);
+    })
+    request.fail(function() {
+      alert("Please enter a title for your new list!")
     })
   })
 });

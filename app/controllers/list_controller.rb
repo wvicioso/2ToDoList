@@ -23,7 +23,11 @@ post '/lists' do
     end
   else
     @errors = ["Your list needs a title!"]
-    erb :'lists/_new', locals: {errors: @errors}
+    if request.xhr?
+      halt 400, erb(:'lists/_new', locals: {errors: @errors}, layout: false)
+    else
+      erb :'lists/_new', locals: {errors: @errors}
+    end
   end
 end
 

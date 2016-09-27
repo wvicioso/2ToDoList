@@ -12,6 +12,15 @@ post '/users' do
   end
 end
 
+before '/lists/:id' do
+  @list = TodoList.find_by(id: params[:id])
+  if params[:id] == 'new'
+    pass
+  elsif @list == nil
+    halt 404, erb(:'404')
+  end
+end
+
 get '/users/:id' do
   @user = User.find_by(id: params[:id])
   @lists = @user.todo_lists
