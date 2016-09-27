@@ -1,11 +1,11 @@
-get 'users/:user_id/tasks/new' do
+get 'users/:user_id/lists/tasks/new' do
   @user = User.find_by(id: params[:user_id])
   @list = List.find_by(id: params[:list_id])
 
   erb :'tasks/_new_task'  
 end
 
-post '/users/:user_id/tasks/new' do
+post '/users/:user_id/lists/tasks/new' do
   @user = User.find_by(id: params[:user_id])
   @list = List.find_by(id: params[:list_id])
   # binding.pry
