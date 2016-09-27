@@ -17,7 +17,7 @@ body {
 
 .form_button {
   color: blue;
-  display: inline-block;
+  display: inline;
   /*background: none;
   border: none;
   display: inline;
@@ -25,4 +25,12 @@ body {
   color: blue;
   width: 150px;
   */
+}
+
+form input {
+  display: inline;
+}
+
+.text_field {
+  width: 300px;
 }

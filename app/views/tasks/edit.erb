@@ -1,0 +1,7 @@
+
+ <form action="/lists/<%= @task.list_id %>/tasks/<%= @task.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="list">Edit Task Description:</label>
+  <input class="text_field" type="textbox" name="description" placeholder="Enter your new description here">
+  <input type="submit" value="Save Task"><br>
+</form>
