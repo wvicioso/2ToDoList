@@ -5,9 +5,9 @@
   <% end %>
   >
   <label for="<%= task.id %>"><%= task.description %></label>
-  <% if !task.complete? %>
+  <% if !task.complete? && owner?(task)%>
     <a class="editable" href="/lists/<%= list.id %>/tasks/<%= task.id %>/edit">Edit task</a>
-  <% else %>
+  <% elsif owner?(task) %>
     <a class="editable" href="/lists/<%= list.id %>/tasks/<%= task.id %>/delete">Delete task</a>
   <% end %>
 </div>
