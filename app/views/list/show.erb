@@ -11,7 +11,7 @@
       <% end %>
     </li>
 
-    <% if current_user.id == @list.user_id %>
+    <% if logged_in? && current_user.id == @list.user_id %>
       <div>
 
           <a href="/lists/<%= @list.id%>/tasks/<%= task.id%>/edit">Edit</a>
@@ -32,7 +32,7 @@
 
 <%= @error if @error %>
 
-<% if current_user.id == @list.user_id %>
+<% if logged_in? && current_user.id == @list.user_id %>
   <form action="/lists/<%= @list.id %>/tasks" method="post">
     <input type="text" name="description">
     <input type="submit" value="Add Task">
