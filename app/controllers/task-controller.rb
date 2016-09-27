@@ -11,11 +11,15 @@ post '/lists/:list_id/tasks/new' do #Add new task
 end 
 
 put '/lists/:list_id/tasks/:id' do #Edit existing task
-
+  task = Task.find_by(id: params[:id])
+  task.update(completed: params[:completed]) if current_user == task.list.user 
+  redirect "/lists/#{params[:list_id]}"
 end 
 
 delete '/lists/:list_id/tasks/:id' do #delete a task item
-
+  task = Task.find_by(id: params[:id])
+  task.destroy if current_user == task.list.user 
+  redirect "/lists/#{params[:list_id]}"
 end 
 
  

@@ -13,3 +13,16 @@ body {
 .errors {
   color: red;
 }
+
+
+.form_button {
+  color: blue;
+  display: inline-block;
+  /*background: none;
+  border: none;
+  display: inline;
+  outline: none;
+  color: blue;
+  width: 150px;
+  */
+}
