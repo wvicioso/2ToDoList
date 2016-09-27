@@ -4,19 +4,7 @@
   <form id="tasks" action="/lists/<%=@list.id%>/tasks" method="post">
   <input type="hidden" name="_method" value="put">
     <% @tasks.each do |task| %>
-      <div id="<%= task.id %>" class="taskDisplay">
-        <input class="checkbox" type="checkbox" name="<%= task.id %>"
-        <% if task.complete? %>
-          checked
-        <% end %>
-        >
-        <label for="<%= task.id %>"><%= task.description %></label>
-        <% if !task.complete? %>
-          <a class="editable" href="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">Edit task</a>
-        <% else %>
-          <a class="editable" href="/lists/<%= @list.id %>/tasks/<%= task.id %>/delete">Delete task</a>
-        <% end %>
-      </div>
+      <%= erb :'tasks/_show', locals: {task: task, list: @list} %>
     <% end %>
     <a class="addable" href="/lists/<%=@list.id%>/tasks/new">Add new task</a>
     <input id="completeButton" type="submit" value="Complete items">
