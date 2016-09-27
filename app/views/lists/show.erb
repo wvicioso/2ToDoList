@@ -6,7 +6,9 @@
     <% @tasks.each do |task| %>
       <%= erb :'tasks/_show', locals: {task: task, list: @list} %>
     <% end %>
-    <a class="addable" href="/lists/<%=@list.id%>/tasks/new">Add new task</a>
-    <input id="completeButton" type="submit" value="Complete items">
+    <% if owner?(@list) %>
+      <a class="addable" href="/lists/<%=@list.id%>/tasks/new">Add new task</a>
+      <input id="completeButton" type="submit" value="Complete items">
+    <% end %>
   </form>
 </section>

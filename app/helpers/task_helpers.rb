@@ -1,3 +1,3 @@
-def owner?(task)
-  current_user == task.user if logged_in?
+def owner?(ownable)
+  current_user == ownable.user if logged_in?
 end

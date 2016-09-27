@@ -3,6 +3,9 @@
   <% if task.complete? %>
     checked
   <% end %>
+  <% if !owner?(task) %>
+    disabled
+  <% end %>
   >
   <label for="<%= task.id %>"><%= task.description %></label>
   <% if !task.complete? && owner?(task)%>
