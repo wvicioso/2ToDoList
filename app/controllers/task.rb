@@ -15,3 +15,19 @@ delete '/lists/:list_id/tasks/:task_id' do
   task.destroy
   redirect "/lists/#{params[:list_id]}"
 end
+
+get '/lists/:list_id/tasks/:task_id/edit' do
+  @task = Task.find_by(id: params[:task_id])
+  erb :'task/edit'
+end
+
+put '/lists/:list_id/tasks/:task_id' do
+  @task = Task.find_by(id: params[:task_id])
+  @task.description = params[:description]
+  if @task.save
+    redirect "/lists/#{params[:list_id]}"
+  else
+    @error = "Task cannot be blank"
+    erb :'task/edit'
+  end
+end

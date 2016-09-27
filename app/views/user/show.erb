@@ -5,6 +5,16 @@
 <ul>
   <% @user.lists.each do |list| %>
     <li><a href="/lists/<%= list.id %>"><%= list.title %></a></li>
+    <span>
+      <a href="/lists/<%= list.id %>/edit">Edit</a>
+    </span>
+    <span>
+      <form action="/lists/<%= list.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+      </form>
+    </span>
+    <br>
   <% end %>
 </ul>
 

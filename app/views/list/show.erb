@@ -8,10 +8,7 @@
     <% if current_user.id == @list.user_id %>
       <div>
         <span>
-          <form action="/lists/<%= @list.id%>/tasks/<%= task.id%>" method="post">
-            <input type="hidden" name="_method" value="put">
-            <input type="submit" value="Edit">
-          </form>
+          <a href="/lists/<%= @list.id%>/tasks/<%= task.id%>/edit">Edit</a>
         </span>
 
         <span>
