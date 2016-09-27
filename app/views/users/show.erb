@@ -1,6 +1,13 @@
 <section id="profile">
   <h1><%= current_user.username %>'s Todo Lists</h1>
+  <article id="listDisplay">
     <% @lists.each do |list| %>
       <%= erb :'lists/_show_one', locals: {list: list} %>
     <% end %>
+  </article>
+  <% if yourself?(@user.id) %>
+    <div id="newList">
+      <a href="/lists/new">New Todo List</a>
+    </div>
+  <% end %>
 </section>

@@ -13,6 +13,7 @@ post '/users' do
 end
 
 get '/users/:id' do
+  @user = User.find_by(id: params[:id])
   @lists = current_user.todo_lists
   erb :'users/show'
 end

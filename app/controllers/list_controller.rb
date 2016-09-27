@@ -1,6 +1,6 @@
 get '/lists' do
   @lists = TodoList.all
-  
+
   erb :'lists/index'
 end
 
@@ -33,14 +33,27 @@ put '/lists/:list_id/tasks'do
   erb :'lists/show'
 end
 
-get '/lists/:list_id/edit' do
+before '/lists/:list_id/edit' do
   @list = TodoList.find_by(id: params[:list_id])
+  if !owner?(@list)
+    halt 404, erb(:'404')
+  end
+end
+
+get '/lists/:list_id/edit' do
   erb :'lists/edit'
 end
 
 put '/lists/:list_id' do
   TodoList.update(params[:list_id], name: params[:name])
   redirect "/lists/#{params[:list_id]}"
+end
+
+before '/lists/:list_id/tasks/new' do
+  @list = TodoList.find_by(id: params[:list_id])
+  if !owner?(@list)
+    halt 404, erb(:'404')
+  end
 end
 
 get '/lists/:list_id/tasks/new' do

@@ -79,11 +79,11 @@ label {
 }
 
 #newList a {
-  width: 40%;
+  text-align: center;
   margin: 5px auto;
   display: block;
-  font-family: serif;
-  font-size: 150%
+  /*font-family: serif;*/
+  font-size: 130%
 }
 
 .todoListLink {
@@ -172,5 +172,27 @@ label {
   font-size: 12px;
   width: 50%;
   margin: auto;
+}
+
+.username a {
+  display: inline;
+  text-decoration: none;
+  color: black;
+}
+
+.username a:hover {
+  color: red;
+}
+
+#notFound {
+  height: 80px;
+  font-size: 28px;
+  text-align: center;
+}
+
+#notFound p {
+  font-family: Caslon;
+  color: gray;
+  margin: 22px 5px;
 }
 

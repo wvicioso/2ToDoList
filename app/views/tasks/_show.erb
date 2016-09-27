@@ -1,7 +1,7 @@
 <div id="<%= task.id %>" class="taskDisplay">
   <input class="checkbox" type="checkbox" name="<%= task.id %>"
   <% if task.complete? %>
-    checked
+    checked disabled
   <% end %>
   <% if !owner?(task) %>
     disabled
