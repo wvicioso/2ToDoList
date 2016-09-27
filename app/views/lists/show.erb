@@ -10,6 +10,17 @@
         <% else %>
           [ ]
         <% end %>
+        <form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete">
+        </form>
+
+        <form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
+          <input type="hidden" name="_method" value="put">
+          <label><input id="task-cbox" type="checkbox" name="completed" value="complete">Completed?</label>
+          <input type="text" name="description" placeholder="Change description">
+          <input type="submit" value="Update Task">
+        </form>
     </li>
   <% end %>
   </ul>

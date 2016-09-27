@@ -18,6 +18,31 @@ post "/lists/:list_id/tasks" do
   if task.save
     redirect "/lists/#{params[:list_id]}/tasks"
   else
-    redirect '/'
+    @errors = task.errors.full_messages
+    erb :"/lists/#{params[:list_id]}/tasks"
   end
+end
+
+put "/lists/:list_id/tasks/:id" do
+  @task = Task.find(params[:id])
+  if params[:completed] == "complete" && params[:description] != ""
+    @task.update_attributes(status: true)
+    @task.update_attributes(description: params[:description])
+    redirect "/lists/#{params[:list_id]}/tasks"
+  elsif params[:completed] != "complete" && params[:description] != ""
+    @task.update_attributes(description: params[:description])
+    redirect "/lists/#{params[:list_id]}/tasks"
+  elsif params[:completed] == "complete" && params[:description] == ""
+    @task.update_attributes(status: true)
+    redirect "/lists/#{params[:list_id]}/tasks"
+  else
+    @errors = @task.errors.full_messages
+    erb :"/lists/#{params[:list_id]}/tasks"
+  end
+end
+
+delete "/lists/:list_id/tasks/:id" do
+  @task = Task.find(params[:id])
+  @task.destroy
+  redirect "/lists/#{params[:list_id]}/tasks"
 end

@@ -1,0 +1,5 @@
+<form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
+  <label><input id="task-cbox" type="checkbox" name="completed">Completed?</label>
+  <input type="text" name="description" placeholder="Change description">
+  <input type="submit" value="Update Task">
+</form>
