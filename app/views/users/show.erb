@@ -1,0 +1,6 @@
+<section id="profile">
+  <h1><%= current_user.username %>'s Todo Lists</h1>
+    <% @lists.each do |list| %>
+      <%= erb :'lists/_show_one', locals: {list: list} %>
+    <% end %>
+</section>

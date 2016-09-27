@@ -13,5 +13,6 @@ post '/users' do
 end
 
 get '/users/:id' do
-  "A profile page, eventually"
+  @lists = current_user.todo_lists
+  erb :'users/show'
 end

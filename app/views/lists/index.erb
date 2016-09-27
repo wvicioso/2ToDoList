@@ -6,8 +6,6 @@
 
 <section id="listDisplay">
   <% @lists.each do |list| %>
-    <div class="todoListLink" id="<%=list.id%>">
-      <a href="/lists/<%=list.id%>"><%=list.name%></a>
-    </div>
+    <%= erb :'lists/_show_one', locals: {list: list} %>
   <% end %>
 </section>
