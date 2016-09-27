@@ -1,15 +1,25 @@
+<div class="container">
 
-<form action="/users/<%= current_user.id %>/lists" method="post">
-      <label for="title">Task title: </label><br>
-      <input type="text" name="task[title]"><br><br>
+<br>
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |error| %>
+        <li style="color:red"><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-      <label for="description">Task Description: </label><br></br>
-      <textarea rows="5" cols="20" name="task[description]">
-      </textarea><br><br>
+  <form action="/users/<%= current_user.id %>/lists/tasks/new" method="post">
+        <label for="title">Task title: </label><br>
+        <input type="text" name="title"><br><br>
 
-      <label for="due_date">Due Date: </label><br>
-      <input type="text" name="task[due_date]"><br><br>
-      
-      <!-- <input type="submit" value="Add New Task"><br><br> -->
-      <input type="submit" value="Create List">
-</form>
+        <label for="description">Task Description: </label><br></br>
+        <textarea rows="5" cols="20" name="description">
+        </textarea><br><br>
+
+        <label for="due_date">Due Date: </label><br>
+        <input type="text" name="due_date"><br><br>
+        
+        <input type="submit" value="Add Task">
+  </form>
+</div>

@@ -1,7 +1,7 @@
 # List of all lists for a specific user
 get '/users/:user_id/lists' do
   @user = User.find(params[:user_id])
-  @list = @user.lists
+  @lists = @user.lists
 
   erb :'lists/index'
 end
@@ -16,11 +16,11 @@ end
 # POST - Create a new list that belongs to currently logged in user
 post '/users/:user_id/lists' do
   @user = User.find(params[:user_id])
-  @list = @user.lists.new(params[:list])
-  @task = @user.tasks.new(params[:task])
-  binding.pry
-  if @list.save && @task.save
-    redirect '/users/#{@user.id}/lists'
+  @list = List.new(user_id: @user.id, title: params[:title])
+  @task = Task.new(list_id: @list.id, title: params[:title], description: params[:description], due_date: params[:due_date])
+  if @list.save
+
+    redirect "/users/#{@user.id}/lists"
   else
     erb :'lists/index'
   end
@@ -30,8 +30,6 @@ end
 get '/users/:user_id/lists/:id' do
   @user = User.find(params[:user_id])
   @list = List.find(params[:id])
-  binding.pry
-  # @tasks = @list.tasks
 
   erb :'lists/show'
 end

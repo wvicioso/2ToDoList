@@ -1,9 +1,11 @@
 <div class="container">
     
-  <% if !@list %>
+  <% if @lists %>
     <h1>Your To Do Lists:</h1>
       <ul>
-          <li><a href="/users/<%= current_user.id %>/lists/<%= @list.id %>"><%= @list.title %></a></li>
+        <% @lists.each do |list| %>
+          <li><a href="/users/<%= current_user.id %>/lists/<%= list.id %>"><%= list.title %></a></li>
+        <% end %>
       </ul>
       
   <% else %>
@@ -14,9 +16,6 @@
 
       <%= erb :'lists/_new_list' %>
 
-      <%= erb :'/tasks/_new_task' %>
-  <br>
-  <br>
 
 <!--       <form action="/users/<%= current_user.id %>/lists/new" method="post">
         <input type="submit" value="Create New List">
