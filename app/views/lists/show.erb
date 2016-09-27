@@ -1,6 +1,6 @@
 <section id="todoDisplay">
   <h1 id="listTitle"><%= @list.name %></h1>
-  <form id="tasks" action="/lists/:list_id/tasks" method="post">
+  <form id="tasks" action="/lists/<%=@list.id%>/tasks" method="post">
   <input type="hidden" name="_method" value="put">
     <% @tasks.each do |task| %>
       <div id="<%= task.id %>" class="taskDisplay">

@@ -25,7 +25,9 @@ get '/lists/:id' do
 end
 
 put '/lists/:list_id/tasks'do
+  completed_task_ids = params.select { |key, value| value == "on" }.keys
   @list = TodoList.find_by(id: params[:list_id])
   @tasks = @list.tasks
-  # to_update = @tasks.map { |task| Task.find_by(id: ta)}
+  completed_task_ids.each { |task_id| Task.update(task_id, status: true) }
+  erb :'lists/show'
 end
