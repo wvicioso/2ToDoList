@@ -3,21 +3,26 @@
 <% if !@list.tasks.empty? %>
 <ul>
   <% @list.tasks.each do |task| %>
-    <li><%= task.description %></li>
+    <li>
+      <%= task.description %>
+
+      <% if task.marked_as_complete == true %>
+      <span>&#10004;</span>
+      <% end %>
+    </li>
 
     <% if current_user.id == @list.user_id %>
       <div>
-        <span>
-          <a href="/lists/<%= @list.id%>/tasks/<%= task.id%>/edit">Edit</a>
-        </span>
 
-        <span>
+          <a href="/lists/<%= @list.id%>/tasks/<%= task.id%>/edit">Edit</a>
+
           <form action="/lists/<%= @list.id%>/tasks/<%= task.id%>" method="post">
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="Delete">
           </form>
-        </span>
-
+          <% if task.marked_as_complete == false %>
+          <a href="/lists/<%= @list.id%>/tasks/<%= task.id%>/mark">Mark as Complete</a>
+          <% end %>
       </div>
     <% end %>
 

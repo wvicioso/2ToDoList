@@ -31,3 +31,10 @@ put '/lists/:list_id/tasks/:task_id' do
     erb :'task/edit'
   end
 end
+
+get '/lists/:list_id/tasks/:task_id/mark' do
+  task = Task.find_by(id: params[:task_id])
+  task.marked_as_complete = true
+  task.save
+  redirect "/lists/#{params[:list_id]}"
+end
