@@ -15,9 +15,10 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>ToDo List</title>
 </head>
 <body>
+  <%= erb :'/shared/_errors', locals {errors: @errors}, layout: false %>
   <%= yield %>
 </body>
 </html>
