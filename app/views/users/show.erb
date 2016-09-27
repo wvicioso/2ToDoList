@@ -1,0 +1,5 @@
+<h1>Welcome, <%= current_user.username %></h1>
+
+<h2>Your Lists:</h2>
+
+<%= erb :'/shared/_lists', locals: {lists: @lists}, layout: false %>

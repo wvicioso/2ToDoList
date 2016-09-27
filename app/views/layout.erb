@@ -18,7 +18,7 @@
   <title>ToDo List</title>
 </head>
 <body>
-  <%= erb :'/shared/_errors', locals {errors: @errors}, layout: false %>
+  <%= erb :'/shared/_errors', locals: {errors: @errors}, layout: false %>
   <%= yield %>
 </body>
 </html>

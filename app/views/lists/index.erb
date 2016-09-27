@@ -1,9 +1,2 @@
 <h1>Lists:</h1>
-<ul>
-    <% @lists.each do |list| %>
-      <li>
-        <a href="/lists/<%= list.id %>"><%= list.title %></a>
-      </li>
-
-    <% end %>
-</ul>
+<%= erb :'/shared/_lists', locals: {lists: @lists}, layout: false %>
