@@ -5,12 +5,12 @@
 <div class="">
   <% @lists.each do |list| %>
     <article id="<%= list.id %>">
-      <% if !logged_in? || logged_in? %>
-      <h2 class="profile-list-title"><a href="/lists/<%= list.id %>"><%= list.title %></a></h2>
-      <p>
-        <span class="timestamp"><%= "#{long_form_date(list.created_at)}" %></span>
-        <span class="task-count"><%= list.tasks.count %></span>
-      </p>
+      <% if !logged_in? %>
+        <h2 class="profile-list-title"><a href="/lists/<%= list.id %>"><%= list.title %></a></h2>
+        <p>
+          <span class="timestamp"><%= "#{long_form_date(list.created_at)}" %></span>
+          <span class="task-count"><%= list.tasks.count %></span>
+        </p>
       <% elsif logged_in? && list.user == current_user %>
         <h2 class="profile-list-title"><%= list.title %></h2>
         <span><a href="/lists/<%= list.id %>/edit">Edit</a> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
@@ -19,6 +19,12 @@
         <p>
           <span class="timestamp"><%= "#{long_form_date(list.created_at)}" %></span>
           <span class="task-count"><a href="/lists/<%= list.id %>"><%= list.tasks.count %></a></span>
+        </p>
+      <% else %>
+        <h2 class="profile-list-title"><a href="/lists/<%= list.id %>"><%= list.title %></a></h2>
+        <p>
+          <span class="timestamp"><%= "#{long_form_date(list.created_at)}" %></span>
+          <span class="task-count"><%= list.tasks.count %></span>
         </p>
       <% end %>
     </article>
