@@ -19,7 +19,17 @@ post '/lists/:id/tasks' do
   end
 end
 
-get '/tasks/:id' do
+get '/lists/:id/tasks/:id' do
   @task = Task.find(params[:id])
   erb :'tasks/show'
+end
+
+# put 'lists/:id/tasks/:id' do
+#
+# end
+
+delete '/lists/:id/tasks/:id' do
+  task = Task.find(params[:id])
+  task.destroy
+  redirect "/lists/#{params[:captures][0]}"
 end

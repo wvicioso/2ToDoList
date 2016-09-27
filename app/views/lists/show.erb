@@ -10,9 +10,12 @@
   <% @tasks.each do |task| %>
     <article id="<%= task.id %>">
       <p><%= task.description %></p>
-      <p><a href="/tasks/<%= task.id %>">View</a></p>
-      <p><a href="#">Edit</a></p>
-      <p><a href="#">Delete</a></p>
+      <p><a href="/lists/<%= @list.id %>/tasks/<%= task.id %>">View</a></p>
+      <p><a href="/lists/<%= @list.id %>/tasks/">Edit</a></p>
+      <form action="/lists/<%= @list.id %>/tasks/<%= task.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+      </form>
     </article>
   <% end %>
 </div>
