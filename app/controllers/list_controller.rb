@@ -19,5 +19,7 @@ post '/lists' do
 end
 
 get '/lists/:id' do
+  @list = TodoList.find_by(id: params[:id])
+  @tasks = @list.tasks
   erb :'lists/show'
 end
