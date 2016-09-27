@@ -29,7 +29,8 @@ header {
 }
 
 #header h1 {
-  width: 10%;
+  min-width: 10%;
+  max-width: 10%;
   margin: auto;
   padding-top: 15px;
 }
@@ -95,7 +96,7 @@ label {
 }
 
 #newList {
-  height: 200px;
+
   font-size: 120%;
 }
 

@@ -23,3 +23,9 @@ get '/lists/:id' do
   @tasks = @list.tasks
   erb :'lists/show'
 end
+
+put '/lists/:list_id/tasks'do
+  @list = TodoList.find_by(id: params[:list_id])
+  @tasks = @list.tasks
+  # to_update = @tasks.map { |task| Task.find_by(id: ta)}
+end
