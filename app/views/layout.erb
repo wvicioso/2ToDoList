@@ -18,7 +18,24 @@
   <title>ToDo List</title>
 </head>
 <body>
+  <header>
+    <nav>
+      <span class="nav_links_span">
+        <% if logged_in? %>
+          <a class="nav_links" href="/users/<%= current_user.id %>"><%= current_user.username %></a>
+          <a class="nav_links" href="/users/logout">Logout</a>
+        <% else %>
+          <a class="nav_links" href="/users/new">Register</a>
+          <a class="nav_links" href="/users/login">Login</a>
+        <% end %>
+        <a class="nav_links"href="/">Home</a>
+      </span class="nav_links">
+    </nav>
+  </header>
+
   <%= erb :'/shared/_errors', locals: {errors: @errors}, layout: false %>
   <%= yield %>
 </body>
 </html>
+
+
