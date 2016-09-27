@@ -1,3 +1,8 @@
+<h1>All My Lists</h1>
+
 <% if @lists %>
 <%= erb :'lists/_list', locals: {lists: @lists}, layout: false %>
 <% end %>
+<form class="form-add-list" method="get" action="/lists/new">
+<input type="submit" value="Add List">
+</form>

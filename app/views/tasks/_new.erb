@@ -1,0 +1,8 @@
+<%= erb :_errors, locals: {errors: @errors}, layout: false %>
+
+<div class="container-form">
+<form class="form-new-task" action="/lists/<%= list.id %>/tasks" method="post">
+  <textarea rows="4" cols="50" name="description" placeholder="Task Name"></textarea>
+  <input type="submit" value="Create Task">
+</form>
+</div>

@@ -5,3 +5,6 @@
   <%= erb :'tasks/_task', locals: {task: task}, layout: false %>
 <% end %>
 </div>
+<form class="form-add-task" method="get" action="/lists/<%= @list.id %>/tasks/new">
+<input type="submit" value="Add Task">
+</form>

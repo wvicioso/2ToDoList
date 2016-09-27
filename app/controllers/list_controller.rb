@@ -8,3 +8,18 @@ get '/lists/:id/show' do
   @tasklist = @list.tasks
   erb :'lists/show'
 end
+
+post '/list' do
+  list = List.new(name: params[:name], user_id: current_user.id)
+  if list.save
+    redirect "/lists/#{list.id}/show"
+  else
+    @errors = list.errors.full_messages
+    erb :'lists/_new'
+  end
+end
+
+get '/lists/new' do
+
+  erb :'lists/_new'
+end
