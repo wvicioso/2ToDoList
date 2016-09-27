@@ -7,12 +7,16 @@ get '/lists/new' do
 end
 
 post '/lists' do
-  list = List.new(params[:list])
-  if list.save
-    redirect "/lists/#{list.id}"
+  if !logged_in?
+    redirect '/'
   else
-    @errors = list.errors.full_messages
-    erb :'lists/new'
+    list = List.new(params[:list])
+    if list.save
+      redirect "/lists/#{list.id}"
+    else
+      @errors = list.errors.full_messages
+      erb :'lists/new'
+    end
   end
 end
 

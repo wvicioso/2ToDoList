@@ -1,0 +1,12 @@
+<h1>Edit Task</h1>
+<form action="/lists/<%= @list.id %>/tasks/<%= @task.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label>Task Description</label>
+  <textarea name="task[description]" rows="8"><%= @task.description %></textarea>
+  <label>Completed</label>
+  <select name="task[completed]">
+    <option value="true">True</option>
+    <option value="false" selected>False</option>
+  </select>
+  <input type="submit" value="Update">
+</form>

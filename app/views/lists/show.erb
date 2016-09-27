@@ -1,21 +1,28 @@
 <h1><%= @list.name %></h1>
+<h3>Tasks</h3>
 <% if !logged_in? %>
-  <h3>Tasks</h3>
+  <div>
+    <% @tasks.each do |task| %>
+      <article id="<%= task.id %>">
+        <p><%= task.description %></p>
+        <p>Completed: <%= task.completed %></p>
+      </article>
+    <% end %>
+  </div>
 <% elsif logged_in? %>
   <div><a href="/lists/<%= @list.id %>/tasks/new">Create New Task</a></div>
-  <h3>Tasks</h3>
+  <div>
+    <% @tasks.each do |task| %>
+      <article id="<%= task.id %>">
+        <p><%= task.description %></p>
+        <p>Completed: <%= task.completed %></p>
+        <p><a href="/lists/<%= @list.id %>/tasks/<%= task.id %>">View</a></p>
+        <p><a href="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">Edit</a></p>
+        <form action="/lists/<%= @list.id %>/tasks/<%= task.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete">
+        </form>
+      </article>
+    <% end %>
+  </div>
 <% end %>
-
-<div>
-  <% @tasks.each do |task| %>
-    <article id="<%= task.id %>">
-      <p><%= task.description %></p>
-      <p><a href="/lists/<%= @list.id %>/tasks/<%= task.id %>">View</a></p>
-      <p><a href="/lists/<%= @list.id %>/tasks/">Edit</a></p>
-      <form action="/lists/<%= @list.id %>/tasks/<%= task.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete">
-      </form>
-    </article>
-  <% end %>
-</div>
