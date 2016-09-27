@@ -3,6 +3,8 @@
   font-family: Futura;
 }
 
+
+
 .container {
   position: relative;
   max-width: 920px;
@@ -195,5 +197,9 @@ label {
   font-family: Caslon;
   color: gray;
   margin: 22px 5px;
+}
+
+.hidden {
+  display: none;
 }
 

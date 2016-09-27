@@ -51,7 +51,8 @@ put '/lists/:list_id/tasks'do
   @tasks = @list.tasks
   completed_task_ids.each { |task_id| Task.update(task_id, status: true) }
   if request.xhr?
-    "It worked!"
+    @updated = Task.find_by(id: completed_task_ids)
+    erb :'tasks/_delete_link', locals: {task: @updated, list: @list}, layout: false
   else
     erb :'lists/show'
   end

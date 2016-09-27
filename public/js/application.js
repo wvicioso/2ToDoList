@@ -69,9 +69,10 @@ $(document).ready(function() {
       url: path,
       data: data
     })
-    request.done(function() {
-      debugger;
-      $thisButton.prop('checked', true, 'disabled', true)
+    request.done(function(response) {
+      $thisButton.prop('checked', true, 'disabled', true);
+      $thisButton.siblings('a').remove();
+      $('#' + taskId).append(response);
     })
   })
 });
