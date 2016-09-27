@@ -1,0 +1,9 @@
+<div class="container-errors"
+  <% if errors %>
+    <ul class="list-errors">
+      <% errors.each do |error| %>
+      <li class="list-item-error"> <%= error %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

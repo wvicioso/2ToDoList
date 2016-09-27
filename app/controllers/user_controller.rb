@@ -1,5 +1,10 @@
 get '/login' do
-  erb :'sessions/login'
+  if logged_in?
+    user = current_user
+    redirect "/user/#{user.id}/profile"
+  else
+    erb :'sessions/login'
+  end
 end
 
 post '/login' do
@@ -30,4 +35,9 @@ end
 
 get '/user/:id/profile' do
   erb :'sessions/show'
+end
+
+get '/logout' do
+  session.clear
+  redirect '/'
 end

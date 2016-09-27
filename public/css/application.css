@@ -1,0 +1,8 @@
+.container-body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+fieldset {
+  margin: 10px;
+}

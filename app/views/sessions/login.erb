@@ -1,5 +1,9 @@
+<fieldset>
+<%= erb :_errors, locals: {errors: @errors}, layout: false %>
+
 <form class="form-login" action="/login" method="post">
   <input type="text" name="user[email]" placeholder="Email">
   <input type="password" name="user[password]" placeholder="Password">
   <input type="submit" value="Login">
 </form>
+</fieldset>
