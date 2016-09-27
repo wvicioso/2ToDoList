@@ -6,6 +6,8 @@
     </li>  
 
     <% if logged_in? && @list.user == current_user %>
+      
+        
       <form action="/lists/<%= @list.id %>/tasks/<%= task.id %>" method="post">
         <input type="hidden" name="_method" value="put">
 
@@ -16,19 +18,22 @@
 
         <% else %>
 
-            <input type="hidden" name="completed" value="<%= false %>">
-            <input class="form_button" type="submit" value="Mark Incomplete"> 
+          <input type="hidden" name="completed" value="<%= false %>">
+          <input class="form_button" type="submit" value="Mark Incomplete"> 
 
         <% end %>
       </form>
 
       <form action="/lists/<%= @list.id %>/tasks/<%= task.id %>" method="post">
         <input type="hidden" name="_method" value="delete">
-          <input type="hidden" name="completed" value="">
-          <input style="color:red;" class="form_button" type="submit" value="Delete"> 
+        <input class="form_button" type="submit" value="Delete">
+
       </form>
 
       <button type="button"><a href="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">Edit</a></button>
+      <% if task.task_overdue? %>
+        <p class="errors" >Task is past due</p>
+      <% end %>
     <% end %>
   <% end %>    
 </ul>
