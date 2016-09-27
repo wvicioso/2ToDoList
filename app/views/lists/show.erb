@@ -4,7 +4,11 @@
   <input type="hidden" name="_method" value="put">
     <% @tasks.each do |task| %>
       <div id="<%= task.id %>" class="taskDisplay">
-        <input type="checkbox" name="<%= task.id %>">
+        <input type="checkbox" name="<%= task.id %>"
+        <% if task.status %>
+          checked
+        <% end %>
+        >
         <label for="<%= task.id %>"><%= task.description %></label>
       </div>
     <% end %>
