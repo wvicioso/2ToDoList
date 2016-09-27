@@ -19,8 +19,14 @@ post '/lists' do
   end
 end
 
-get '/lists/:id' do
+before '/lists/:id' do
   @list = TodoList.find_by(id: params[:id])
+  if @list == nil
+    halt 404, erb(:'404')
+  end
+end
+
+get '/lists/:id' do
   @tasks = @list.tasks
   erb :'lists/show'
 end
@@ -35,7 +41,7 @@ end
 
 before '/lists/:list_id/edit' do
   @list = TodoList.find_by(id: params[:list_id])
-  if !owner?(@list)
+  if !owner?(@list) 
     halt 404, erb(:'404')
   end
 end
@@ -73,6 +79,12 @@ post '/lists/:list_id/tasks' do
   end
 end
 
+before '/lists/:list_id/tasks/:id/edit' do
+  if !owner?(@list)
+    halt 404, erb(:'404')
+  end
+end
+
 get '/lists/:list_id/tasks/:id/edit' do
   @list = TodoList.find_by(id: params[:list_id])
   @task = Task.find_by(id: params[:id])
@@ -86,6 +98,12 @@ put '/lists/:list_id/tasks/:id' do
   redirect "/lists/#{@list.id}"
 end
 
+before '/lists/:list_id/tasks/:id/delete' do
+  if !owner?(@list)
+    halt 404, erb(:'404')
+  end
+end
+
 get '/lists/:list_id/tasks/:id/delete' do
   @list = TodoList.find_by(id: params[:list_id])
   @task = Task.find_by(id: params[:id])
@@ -97,4 +115,8 @@ delete '/lists/:list_id/tasks/:id' do
   @task = Task.find_by(id: params[:id])
   @task.destroy
   redirect "/lists/#{@list.id}"
+end
+
+not_found do 
+  erb :'404'
 end
