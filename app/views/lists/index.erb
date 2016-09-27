@@ -1,17 +1,20 @@
 <div class="container">
     
-  <% if !@lists %>
+  <% if !@list %>
     <h1>Your To Do Lists:</h1>
       <ul>
           <li><a href="/users/<%= current_user.id %>/lists/<%= @list.id %>"><%= @list.title %></a></li>
       </ul>
       
   <% else %>
-    <%= erb :'lists/_list_error' %>
+      
+      <%= erb :'lists/_list_error' %>
+
   <% end %>
 
-  <%= erb :'lists/_new_list' %>
-  
+      <%= erb :'lists/_new_list' %>
+
+      <%= erb :'/tasks/_new_task' %>
   <br>
   <br>
 

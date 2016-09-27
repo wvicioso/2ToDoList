@@ -1,7 +1,7 @@
 # List of all lists for a specific user
 get '/users/:user_id/lists' do
   @user = User.find(params[:user_id])
-  @lists = @user.lists
+  @list = @user.lists
 
   erb :'lists/index'
 end
@@ -16,11 +16,10 @@ end
 # POST - Create a new list that belongs to currently logged in user
 post '/users/:user_id/lists' do
   @user = User.find(params[:user_id])
-  @list = List.new(params[:list])
-  @task = Task.new(params[:task])
-
+  @list = @user.lists.new(params[:list])
+  @task = @user.tasks.new(params[:task])
+  binding.pry
   if @list.save && @task.save
-
     redirect '/users/#{@user.id}/lists'
   else
     erb :'lists/index'
@@ -28,14 +27,15 @@ post '/users/:user_id/lists' do
 end
 
 # Display a specific list that belongs to a specific user
-get 'users/:user_id/lists/:id' do
+get '/users/:user_id/lists/:id' do
   @user = User.find(params[:user_id])
   @list = List.find(params[:id])
+  binding.pry
   # @tasks = @list.tasks
 
   erb :'lists/show'
 end
 
 # Return a form for editing a list
-get 'users/:user_id/lists/:id/edit' do
+get '/users/:user_id/lists/:id/edit' do
 end

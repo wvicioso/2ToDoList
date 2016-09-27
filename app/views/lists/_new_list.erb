@@ -8,22 +8,11 @@
     </ul>
   <% end %>
 
-    <form action="/users/<%= current_user.id %>/lists" method="post">
+    <form action="/users/<%= current_user.id %>/tasks/new" method="post">
       <h4><label for="title">List Title: </label></h4>
-      <input type="text" name="list[title]"><br><br>
+      <input type="text" name="title"><br><br>
 
-      <hr><br>
-
-      <label for="title">Task title: </label><br>
-      <input type="text" name="task[title]"><br><br>
-
-      <label for="description">Task Description: </label><br></br>
-      <textarea rows="5" cols="20" name="task[description]">
-      </textarea><br><br>
-
-      <label for="due_date">Due Date: </label><br>
-      <input type="text" name="task[due_date]"><br><br>
-      
-      <input type="submit" value="Add New Task"><br><br>
       <input type="submit" value="Create List">
+      <hr><br>
+      
     </form>
