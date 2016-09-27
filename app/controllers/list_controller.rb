@@ -16,7 +16,11 @@ post '/lists' do
   @list = TodoList.new(params[:todolist])
   if @list.save
     current_user.todo_lists << @list
-    redirect "/lists/#{@list.id}"
+    if request.xhr?
+      erb :'lists/_show_one', locals: {list: @list, user: current_user}, layout: false
+    else
+      redirect "/lists/#{@list.id}"
+    end
   else
     @errors = ["Your list needs a title!"]
     erb :'lists/_new', locals: {errors: @errors}
