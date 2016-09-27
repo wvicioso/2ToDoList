@@ -12,6 +12,7 @@ post '/login' do
     session[:user_id] = user.id
     redirect '/secret'
   else 
+    @errors = ["We're sorry, we could not find the user you entered. Please check your login information and try again."]
     erb :"session/login"
   end
 end
@@ -31,7 +32,7 @@ post '/register' do
     erb :"session/login"
   else
     @errors = user.errors.messages
-    erb :"session/login"
+    erb :"/users/new"
   end
 end
 
@@ -39,6 +40,6 @@ get '/secret' do
   if logged_in?
     erb :"secret"
   else
-    erb :"sesion/login"
+    erb :"session/login"
   end
 end

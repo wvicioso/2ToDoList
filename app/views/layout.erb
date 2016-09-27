@@ -18,6 +18,16 @@
   <title></title>
 </head>
 <body>
+  <nav>
+    <a href="/">Home</a>
+    <% if !logged_in? %>
+      <a href="/register">Register</a>
+      <a href="/login">Login</a>
+    <% end %>
+    <% if logged_in? %>
+      <a href="/logout">Logout</a>
+    <% end %>
+  </nav>
   <%= yield %>
 </body>
 </html>

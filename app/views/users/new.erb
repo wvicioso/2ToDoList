@@ -1,3 +1,12 @@
+<% if @errors %>
+  <p>We were unable to create a new account for you due to the following reason(s):</p>
+  <% @errors.each do |error| %>
+    <ul>
+      <li><%= error %></li>
+    </ul>
+  <% end %>
+<% end %>
+
 <form id="registration-form" method="post" action="/register">
   <input type="text" name="username" placeholder="Username">
   <input type="text" name="email" placeholder="Email Address">
