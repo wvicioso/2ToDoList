@@ -1,2 +1,11 @@
 <h1>Lists:</h1>
+
 <%= erb :'/shared/_lists', locals: {lists: @lists}, layout: false %>
+
+<% if logged_in? %>
+  <form action='lists/new' method="post">
+        <label for="list">Create a List: </label>
+        <input type="text" name="title" placeholder="Title">
+        <input type="submit" value="Add List"><br>
+  </form>
+<% end %>

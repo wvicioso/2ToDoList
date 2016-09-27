@@ -1,6 +1,6 @@
 nav {
-  /*padding-top: 15px;
-  */padding-right: 5px;
+ /* padding-top: 15px;
+  padding-right: 5px;*/
   height: 45px;
   text-align: right;
   vertical-align: bottom;
@@ -8,4 +8,8 @@ nav {
 
 body {
   padding: 10px;
+}
+
+.errors {
+  color: red;
 }
