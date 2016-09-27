@@ -1,0 +1,13 @@
+<% if logged_in? %>
+  <a href="/lists/new">Create a New List</a>
+<% end %>
+
+<% if @lists %>
+  <ul>
+  <% @lists.each do |list| %>
+    <li>
+      <a href="/lists/<%= list.id %>"><%= list.name %></a>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

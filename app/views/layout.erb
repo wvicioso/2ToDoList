@@ -25,6 +25,7 @@
       <a href="/login">Login</a>
     <% end %>
     <% if logged_in? %>
+      <a href="/lists"><%= current_user.username %>'s Lists</a>
       <a href="/logout">Logout</a>
     <% end %>
   </nav>
