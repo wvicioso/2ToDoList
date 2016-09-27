@@ -1,1 +1,3 @@
-Hello
+<% if @lists %>
+<%= erb :'lists/_list', locals: {lists: @lists}, layout: false %>
+<% end %>

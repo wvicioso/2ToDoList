@@ -34,8 +34,21 @@ post '/register' do
 end
 
 get '/user/:id/profile' do
-  erb :'sessions/show'
+    @user = User.find(params[:id])
+    if @user && current_user.id == @user.id
+      @lists = @user.lists
+      erb :'sessions/show'
+    elsif logged_in?
+      redirect '/'
+    else
+      redirect '/login'
+    end
 end
+
+#error route if Sinatra is in production environment.
+# error ActiveRecord::RecordNotFound do
+#   redirect '/'
+# end
 
 get '/logout' do
   session.clear
