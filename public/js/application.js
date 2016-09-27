@@ -7,6 +7,7 @@ $(document).ready(function() {
       url: path
     })
     request.done(function(response) {
+      $('#updateList').remove();
       $('#profile').after(response);
     })
   })
@@ -26,6 +27,18 @@ $(document).ready(function() {
     })
     request.fail(function() {
       alert("Please enter a title for your new list!")
+    })
+  })
+  $('.addable').click(function(e) {
+    e.preventDefault();
+    var path = $(e.target).attr('href');
+    var request = $.ajax({
+      method: 'get',
+      url: path
+    })
+    request.done(function(response){
+      $('#updateTask').remove();
+      $('#todoDisplay').after(response);
     })
   })
 });

@@ -78,7 +78,11 @@ end
 
 get '/lists/:list_id/tasks/new' do
   @list = TodoList.find_by(id: params[:list_id])
-  erb :'tasks/new'
+  if request.xhr?
+    erb :'tasks/_new', locals: {list: @list}, layout: false
+  else
+    erb :'tasks/_new'
+  end
 end
 
 post '/lists/:list_id/tasks' do
@@ -89,7 +93,7 @@ post '/lists/:list_id/tasks' do
     redirect "/lists/#{@list.id}"
   else
     @errors = ["Please enter a description of your task."]
-    erb :'tasks/new'
+    erb :'tasks/_new'
   end
 end
 
