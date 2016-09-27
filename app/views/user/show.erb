@@ -1,1 +1,19 @@
-:P
+<h2>Hello, <%= @user.username %></h2>
+
+<h3>Your lists</h3>
+
+<ul>
+  <% @user.lists.each do |list| %>
+    <li><a href="/lists/<%= list.id %>"><%= list.title %></a></li>
+  <% end %>
+</ul>
+
+<h4>Add a New List:</h4>
+<%= @error if @error %>
+
+<form action="/lists" method="post">
+  <input type="text" name="title">
+  <input type="submit" value="Add List">
+</form>
+
+<h3>Your completed tasks:</h3>

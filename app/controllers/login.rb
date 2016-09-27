@@ -18,3 +18,7 @@ get '/logout' do
   session.clear
   redirect '/login'
 end
+
+get '/restricted' do
+  erb :'restricted'
+end
