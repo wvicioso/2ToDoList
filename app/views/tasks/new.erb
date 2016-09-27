@@ -1,0 +1,6 @@
+<h1>Add a task</h1>
+
+<form method="post" action="/lists/<%= @list.id %>/tasks">
+	<input type="text" name="name" placeholder="task name">
+	<input type="submit" value="add task">
+</form><br>

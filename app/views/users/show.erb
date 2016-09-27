@@ -1,25 +1,28 @@
+
 <h1>your lists</h1>
 
-<% if has_lists? %>
-	<% @user_lists.each do |user_list| %>
-		<ul>
+<ul id="your-lists">
+	<% if has_lists? %>
+		<% @user_lists.each do |user_list| %>
 			<li>
 				<a href="/lists/<%= user_list.id %>"><%= user_list.name %></a>
 			</li><br>
-		</ul>
-	<% end %>
-<% end %><br><br>
+		<% end %>
 
-<% if current_user.tasks.count > 0 %>
+	<% end %><br><br>
+</ul>
+
+
+<% if @user_tasks.count > 0 %>
 	<h1>completed tasks</h1>
-	<% completed_tasks.each do |completed_task| %>
+	<% @complete_tasks.each do |completed_task| %>
 		<ul>
 			<li><%= completed_task.name %></li>
 		</ul>
 	<% end %><br><br>
 
 	<h1>incomplete tasks</h1>
-	<% incomplete_tasks.each do |incomplete_task| %>
+	<% @incomplete_tasks.each do |incomplete_task| %>
 		<ul>
 			<li><%= incomplete_task.name %></li>
 		</ul>
@@ -27,5 +30,8 @@
 <% end %>
 <br><br>
 
-
-<a href="/lists/new"><h1>new list</h1></a>
+<div id="create-list-div">
+	<form id="create-list" method="get" action="/lists/new">
+			<button type="submit">create list</button>
+	</form>
+</div>

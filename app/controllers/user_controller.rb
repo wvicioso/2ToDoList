@@ -34,6 +34,9 @@ get '/users/logout' do
 end
 
 get '/users/:id' do
-	@user_lists = List.where(user_id: params[:id])
+	@user_lists = current_user.lists
+	@user_tasks = current_user.tasks
+	@complete_tasks = current_user.complete_tasks
+	@incomplete_tasks = current_user.incomplete_tasks
 	erb :'users/show'
 end

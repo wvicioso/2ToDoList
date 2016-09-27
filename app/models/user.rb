@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
   has_many :tasks, through: :lists
 
   has_secure_password
+
+  def complete_tasks
+  	self.tasks.where(complete: true)
+  end
+
+  def incomplete_tasks
+  	self.tasks.where(complete: false)
+  end
 end

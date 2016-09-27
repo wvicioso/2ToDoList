@@ -8,39 +8,44 @@
 	</ul>
 <% end %>
 
-<% if @list.tasks.count > 0 %>
-	<% @list.tasks.each do |task| %>
-		<ul>
-			<li>
-				<%= task.name %><br><br>
-				<% if task.complete %>
-					COMPLETE<br><br>
-				<% else %>
-					<form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
-						<input type="hidden" name="_method" value="put">
-						<input type="submit" value="mark as complete">
+<ul id="task-list">
+	<% if @list.tasks.count > 0 %>
+		<% @list.tasks.each do |task| %>
+				<li>
+					<%= task.name %><br><br>
+					<% if task.complete %>
+						COMPLETE<br><br>
+					<% else %>
+						<form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
+							<input type="hidden" name="_method" value="put">
+							<input type="submit" value="mark as complete">
+						</form><br>
+					<% end %>
+					<form method="get" action="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">
+						<button type="submit">change task name</button>
 					</form><br>
-				<% end %>
-				<a href="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">change task name</a><br><br>
-				<form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
-					<input type="hidden" name="_method" value="delete">
-					<input type="submit" value="delete task">
-				</form>
-			</li><br><br><br>
-		</ul>
-	<% end %>
-<% end %><br><br><br>
+					<form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
+						<input type="hidden" name="_method" value="delete">
+						<input type="submit" value="delete task">
+					</form>
+				</li><br><br><br>
+		<% end %>
+	<% end %><br><br><br>
+</ul>
 
-<form method="post" action="/lists/<%= @list.id %>/tasks">
-	<input type="text" name="name" placeholder="task name">
-	<input type="submit" value="add task">
-</form><br>
+<div id="create-task-div">
+	<h3>list editing</h3>
 
+	<form id="create-task" method="get" action="/lists/<%= @list.id %>/tasks/new">
+		<button type="submit">add task</button>
+	</form><br>
+</div>
 
-<br><br><br>
-<a href="/lists/<%= @list.id %>/edit">change list name</a><br><br>
+	<form method="get" action="/lists/<%= @list.id %>/edit">
+		<button type="submit">change list name</button>
+	</form><br>
 
-<form method="post" action="/lists/<%= @list.id %>">
-	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="delete list">
-</form>
+	<form method="post" action="/lists/<%= @list.id %>">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="delete list">
+	</form>

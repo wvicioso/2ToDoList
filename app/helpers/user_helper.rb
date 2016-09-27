@@ -26,10 +26,10 @@ def has_lists?
 	current_user.lists.count > 0
 end
 
-def completed_tasks
-	current_user.tasks.where(complete: true)
-end
+# def completed_tasks
+# 	current_user.tasks.where(complete: true) #move these methods to task model
+# end
 
-def incomplete_tasks
-	current_user.tasks.where(complete: false)
-end
+# def incomplete_tasks
+# 	current_user.tasks.where(complete: false)
+# end
