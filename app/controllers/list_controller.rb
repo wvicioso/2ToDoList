@@ -5,7 +5,11 @@ get '/lists' do
 end
 
 get '/lists/new' do
-  erb :'lists/new'
+  if request.xhr?
+    erb :'lists/_new', layout: false
+  else
+    erb :'lists/_new'
+  end
 end
 
 post '/lists' do
@@ -14,8 +18,8 @@ post '/lists' do
     current_user.todo_lists << @list
     redirect "/lists/#{@list.id}"
   else
-    @errors = "Your list needs a title!"
-    erb :'lists/new'
+    @errors = ["Your list needs a title!"]
+    erb :'lists/_new', locals: {errors: @errors}
   end
 end
 
