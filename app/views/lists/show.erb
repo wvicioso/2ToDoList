@@ -13,7 +13,7 @@
         <label for="<%= task.id %>"><%= task.description %></label>
       </div>
     <% end %>
-    <a href="/list/<%=@list.id%>/tasks/new">Add new task</a>
+    <a href="/lists/<%=@list.id%>/tasks/new">Add new task</a>
     <input id="completeButton" type="submit" value="Complete items">
   </form>
 </section>

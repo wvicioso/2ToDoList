@@ -41,3 +41,20 @@ put '/lists/:list_id' do
   TodoList.update(params[:list_id], name: params[:name])
   redirect "/lists/#{params[:list_id]}"
 end
+
+get '/lists/:list_id/tasks/new' do
+  @list = TodoList.find_by(id: params[:list_id])
+  erb :'tasks/new'
+end
+
+post '/lists/:list_id/tasks' do
+  @list = TodoList.find_by(id: params[:list_id])
+  @task = Task.new(params[:task])
+  if @task.save
+    @list.tasks << @task
+    redirect "/lists/#{@list.id}"
+  else
+    @errors = ["Please enter a description of your task."]
+    erb :'tasks/new'
+  end
+end
