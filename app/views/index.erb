@@ -7,8 +7,8 @@
 
 <div>
   <% @lists.each do |list| %>
-    <article id="<%= list.id %>"
-      <h2><a href="/lists/<%= list.id %>"><%= list.name %></a></h2>
+    <article id="<%= list.id %>">
+      <h3><a href="/lists/<%= list.id %>"><%= list.name %></a></h3>
     </article>
   <% end %>
 </div>
