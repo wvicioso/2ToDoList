@@ -1,7 +1,7 @@
 <div class="todoListLink" id="<%=list.id%>">
   <a href="/lists/<%=list.id%>"><%=list.name%></a>
   <div class="info">
-    <span class="username"><a href="/users/<%= list.user.id %>"><%= list.user.username if list.user %></a> | </span>
+    <span class="username"><a href="/users/<%= list.user.id %>"><%= list.user.username%></a> | </span>
     <span class="created"><%= list.created_at %></span>
   </div>
 </div>
