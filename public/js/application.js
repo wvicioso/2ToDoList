@@ -56,4 +56,20 @@ $(document).ready(function() {
       $('.addable').before(response);
     })
   })
+  $('#tasks').on('click', '.checkbox', function(e){
+    e.preventDefault();
+    var obj = {}
+    var taskId = $(e.target).attr('name');
+    obj[taskId] = "on"
+    var data = $.param(obj);
+    var path = $('#tasks').attr('action');
+    var request = $.ajax ({
+      method: 'put',
+      url: path,
+      data: data
+    })
+    request.done(function(response) {
+
+    })
+  })
 });
