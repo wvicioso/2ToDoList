@@ -1,6 +1,6 @@
 <section id="todoDisplay">
   <h1 id="listTitle"><%= @list.name %></h1>
-  <a href="/lists/<%= @list.id %>/edit">Edit list title</a>
+  <a class="editable" href="/lists/<%= @list.id %>/edit">Edit list title</a>
   <form id="tasks" action="/lists/<%=@list.id%>/tasks" method="post">
   <input type="hidden" name="_method" value="put">
     <% @tasks.each do |task| %>
@@ -11,9 +11,12 @@
         <% end %>
         >
         <label for="<%= task.id %>"><%= task.description %></label>
+        <% if !task.complete? %>
+          <a class="editable" href="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">Edit task</a>
+        <% end %>
       </div>
     <% end %>
-    <a href="/lists/<%=@list.id%>/tasks/new">Add new task</a>
+    <a class="addable" href="/lists/<%=@list.id%>/tasks/new">Add new task</a>
     <input id="completeButton" type="submit" value="Complete items">
   </form>
 </section>

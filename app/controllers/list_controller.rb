@@ -58,3 +58,16 @@ post '/lists/:list_id/tasks' do
     erb :'tasks/new'
   end
 end
+
+get '/lists/:list_id/tasks/:id/edit' do
+  @list = TodoList.find_by(id: params[:list_id])
+  @task = Task.find_by(id: params[:id])
+  erb :'tasks/edit'  
+end
+
+put '/lists/:list_id/tasks/:id' do
+  @list = TodoList.find_by(id: params[:list_id])
+  @task = Task.find_by(id: params[:id])
+  Task.update(@task.id, description: params[:description])
+  redirect "/lists/#{@list.id}"
+end

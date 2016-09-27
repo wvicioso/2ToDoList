@@ -1,0 +1,9 @@
+<section id="updateTask">
+  <%= erb :'_errors', locals: {errors: @errors} %>
+  <form id="newListForm" action="/lists/<%=@list.id%>/tasks/<%=@task.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <label>Edit this task:</label>
+    <input type="text" name="description">
+    <input type="submit" value="Update">
+  </form>
+</section>

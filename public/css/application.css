@@ -135,14 +135,14 @@ label {
   display: inline-block;
 }
 
-#todoDisplay a {
+.addable {
+  font-size: 80%;
+}
+
+.editable {
   font-size: 70%;
   margin-left: 10px;
   display: inline;
-}
-
-#tasks a {
-  font-size: 80%;
 }
 
 #completeButton {
