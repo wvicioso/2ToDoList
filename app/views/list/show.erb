@@ -1,7 +1,16 @@
-<h2>List: <%= @list.title %></h2>
+<h2>Title: <%= @list.title %></h2>
 
+<% if !@list.tasks.empty? %>
 <ul>
   <% @list.tasks.each do |task| %>
     <li><%= task.description %></li>
   <% end %>
 </ul>
+<% end %>
+
+<%= @error if @error %>
+
+<form action="/lists/<%= @list.id %>/tasks" method="post">
+  <input type="text" name="description">
+  <input type="submit" value="Add Task">
+</form>
