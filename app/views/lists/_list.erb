@@ -1,0 +1,9 @@
+<% if lists %>
+  <div class="container-lists">
+    <ul class="todolist">
+      <% lists.each do |list| %>
+        <li class="todolist-item"><a href="/lists/<%= list.id %>/show"><%= list.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
