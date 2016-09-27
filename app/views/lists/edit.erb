@@ -1,0 +1,7 @@
+<h1>edit the name of your list</h1>
+
+<form method="post" action="/lists/<%= @list.id %>">
+	<input type="hidden" name="_method" value="put">
+	<input name="name" type="text" placeholder="new name">
+	<input type="submit" value="update">
+</form>

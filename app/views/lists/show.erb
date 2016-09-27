@@ -1,0 +1,46 @@
+<h1><%= @list.name %></h1>
+
+<% if @errors %>
+	<ul>
+		<% @errors.each do |error| %>
+			<li><%= error %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<% if @list.tasks.count > 0 %>
+	<% @list.tasks.each do |task| %>
+		<ul>
+			<li>
+				<%= task.name %><br><br>
+				<% if task.complete %>
+					COMPLETE<br><br>
+				<% else %>
+					<form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
+						<input type="hidden" name="_method" value="put">
+						<input type="submit" value="mark as complete">
+					</form><br>
+				<% end %>
+				<a href="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">change task name</a><br><br>
+				<form method="post" action="/lists/<%= @list.id %>/tasks/<%= task.id %>">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" value="delete task">
+				</form>
+			</li><br><br><br>
+		</ul>
+	<% end %>
+<% end %><br><br><br>
+
+<form method="post" action="/lists/<%= @list.id %>/tasks">
+	<input type="text" name="name" placeholder="task name">
+	<input type="submit" value="add task">
+</form><br>
+
+
+<br><br><br>
+<a href="/lists/<%= @list.id %>/edit">change list name</a><br><br>
+
+<form method="post" action="/lists/<%= @list.id %>">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="delete list">
+</form>

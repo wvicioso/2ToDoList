@@ -1,0 +1,14 @@
+<h1>create a list</h1>
+
+<% if @errors %>
+	<ul>
+		<% @errors.each do |error| %>
+			<li><%= error %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<form method="post" action="/lists">
+	<input name="name" type="text" placeholder="name">
+	<input type="submit" value="create">
+</form>

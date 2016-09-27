@@ -1,0 +1,15 @@
+<h1>change task name</h1>
+
+<% if @errors %>
+	<ul>
+		<% @errors.each do |error| %>
+			<li><%= error %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<form method="post" action="/lists/<%= @list.id %>/tasks/<%= @task.id %>">
+	<input type="hidden" name="_method" value="put">
+	<input type="text" name="name" placeholder="new name">
+	<input type="submit" value="change name">
+</form>

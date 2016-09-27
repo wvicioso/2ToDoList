@@ -15,9 +15,18 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Todo List</title>
 </head>
 <body>
+  <% if logged_in? %>
+    <a href="/users/<%= current_user.id %>"><%= current_user.username %></a> | 
+    <a href='/users/logout'>logout</a> | 
+    <a href='/'>home</a>
+  <% else %>
+    <a href='/users/register'>register</a> | 
+    <a href='/users/login'>login</a> | 
+    <a href='/'>home</a>
+  <% end %>
   <%= yield %>
 </body>
 </html>
