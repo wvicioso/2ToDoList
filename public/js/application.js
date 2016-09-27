@@ -22,7 +22,7 @@ $(document).ready(function() {
       data: data
     })
     request.done(function(response) {
-      $('#newListForm').remove();
+      $('#updateList').remove();
       $('#listDisplay').append(response);
     })
     request.fail(function() {
@@ -39,6 +39,21 @@ $(document).ready(function() {
     request.done(function(response){
       $('#updateTask').remove();
       $('#todoDisplay').after(response);
+    })
+  })
+  $('#wrapper').on('submit', '#newTaskForm', function(e) {
+    e.preventDefault();
+    var method = $(e.target).attr('method');
+    var path = $(e.target).attr('action');
+    var data = $(e.target).serialize();
+    var request = $.ajax ({
+      method: method,
+      url: path,
+      data: data
+    })
+    request.done(function(response) {
+      $('#updateTask').remove();
+      $('.addable').before(response);
     })
   })
 });

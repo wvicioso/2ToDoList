@@ -1,16 +1,18 @@
-<section id="todoDisplay">
-  <h1 id="listTitle"><%= @list.name %></h1>
-  <% if owner?(@list) %>
-    <a class="editable" href="/lists/<%= @list.id %>/edit">Edit list title</a>
-  <% end %>
-  <form id="tasks" action="/lists/<%=@list.id%>/tasks" method="post">
-  <input type="hidden" name="_method" value="put">
-    <% @tasks.each do |task| %>
-      <%= erb :'tasks/_show', locals: {task: task, list: @list} %>
-    <% end %>
+<div id="wrapper">
+  <section id="todoDisplay">
+    <h1 id="listTitle"><%= @list.name %></h1>
     <% if owner?(@list) %>
-      <a class="addable" href="/lists/<%=@list.id%>/tasks/new">Add new task</a>
-      <input id="completeButton" type="submit" value="Complete items">
+      <a class="editable" href="/lists/<%= @list.id %>/edit">Edit list title</a>
     <% end %>
-  </form>
-</section>
+    <form id="tasks" action="/lists/<%=@list.id%>/tasks" method="post">
+    <input type="hidden" name="_method" value="put">
+      <% @tasks.each do |task| %>
+        <%= erb :'tasks/_show', locals: {task: task, list: @list} %>
+      <% end %>
+      <% if owner?(@list) %>
+        <a class="addable" href="/lists/<%=@list.id%>/tasks/new">Add new task</a>
+        <input id="completeButton" type="submit" value="Complete items">
+      <% end %>
+    </form>
+  </section>
+  </div>

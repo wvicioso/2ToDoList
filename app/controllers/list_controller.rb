@@ -81,7 +81,7 @@ get '/lists/:list_id/tasks/new' do
   if request.xhr?
     erb :'tasks/_new', locals: {list: @list}, layout: false
   else
-    erb :'tasks/_new'
+    erb :'tasks/_new', locals: {list: @list}
   end
 end
 
@@ -90,7 +90,11 @@ post '/lists/:list_id/tasks' do
   @task = Task.new(params[:task])
   if @task.save
     @list.tasks << @task
-    redirect "/lists/#{@list.id}"
+    if request.xhr?
+      erb :'tasks/_show', locals: {task: @task, list: @list}, layout: false
+    else
+      redirect "/lists/#{@list.id}"
+    end
   else
     @errors = ["Please enter a description of your task."]
     erb :'tasks/_new'
