@@ -5,4 +5,5 @@ class Task < ActiveRecord::Base
   validates :description,
             :list_id,
               presence: true
+
 end

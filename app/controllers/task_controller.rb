@@ -23,8 +23,13 @@ end
 put '/lists/:list_id/tasks/:id' do
   task = Task.find(params[:id])
   if task
-    task.update(description: params[:description])
-    redirect "/lists/#{params[:id]}/show"
+    if params[:description]
+      task.update(description: params[:description])
+      redirect "/lists/#{params[:list_id]}/show"
+    elsif params[:completed]
+      task.update(completed: true)
+      redirect "/lists/#{params[:list_id]}/show"
+    end
   else
     erb :'lists/show'
   end

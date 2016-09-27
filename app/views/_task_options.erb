@@ -1,4 +1,12 @@
 <div class="container-options">
+  <% if !task.completed %>
+    <form class="form-edit" method="post" action="/lists/<%= list.id %>/tasks/<%= task.id %>">
+      <input type="hidden" name="_method" value="put">
+      <button class ="fa fa-check-circle-o" type="submit" name="completed"></button>
+    </form>
+  <% else %>
+    <i class="fa fa-check-circle" aria-hidden="true"></i>
+  <% end %>
   <form class="form-options" action="/lists/<%= list.id %>/tasks/<%= task.id %>/edit" method="get">
     <button class="fa fa-pencil-square-o" type="submit" name="list_edit"></button>
   </form>
