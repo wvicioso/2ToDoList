@@ -60,6 +60,7 @@ $(document).ready(function() {
     e.preventDefault();
     var obj = {}
     var taskId = $(e.target).attr('name');
+    var $thisButton = $(e.target)
     obj[taskId] = "on"
     var data = $.param(obj);
     var path = $('#tasks').attr('action');
@@ -68,8 +69,9 @@ $(document).ready(function() {
       url: path,
       data: data
     })
-    request.done(function(response) {
-
+    request.done(function() {
+      debugger;
+      $thisButton.prop('checked', true, 'disabled', true)
     })
   })
 });

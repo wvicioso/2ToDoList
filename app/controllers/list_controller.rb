@@ -50,7 +50,11 @@ put '/lists/:list_id/tasks'do
   @list = TodoList.find_by(id: params[:list_id])
   @tasks = @list.tasks
   completed_task_ids.each { |task_id| Task.update(task_id, status: true) }
-  erb :'lists/show'
+  if request.xhr?
+    "It worked!"
+  else
+    erb :'lists/show'
+  end
 end
 
 before '/lists/:list_id/edit' do
