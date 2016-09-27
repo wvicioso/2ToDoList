@@ -1,9 +1,22 @@
+<a href="/lists/<%= @list.id %>/tasks/new">Create a New Task</a>
+
 <% if @tasks %>
   <ul>
   <% @tasks.each do |task| %>
     <li>
       <%= task.description %>
+        <% if task.status %>
+          [x]
+        <% else %>
+          [ ]
+        <% end %>
     </li>
   <% end %>
   </ul>
 <% end %>
+
+<a href="/lists/<%= @list.id %>/edit">Update your list name</a>
+<form method="post" action="/lists/<%= @list.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>

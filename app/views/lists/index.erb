@@ -6,7 +6,8 @@
   <ul>
   <% @lists.each do |list| %>
     <li>
-      <a href="/lists/<%= list.id %>"><%= list.name %></a>
+      <a href="/lists/<%= list.id %>/tasks"><%= list.name %></a>
+      - <a href="/lists/<%= list.id %>/edit">Update your list name</a>
     </li>
   <% end %>
   </ul>

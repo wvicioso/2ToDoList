@@ -1,6 +1,6 @@
 get '/lists' do
   if logged_in?
-    @lists = List.where(user_id: current_user.id)
+    @lists = List.where(user_id: current_user.id).order("name ASC")
     erb :"/lists/index"
   else
     redirect '/login'
@@ -25,8 +25,28 @@ post '/lists' do
   end
 end
 
-get "/lists/:id" do
+get "/lists/:id/edit" do
   @list = List.find(params[:id])
-  @tasks = Task.where(list_id: @list.id)
-  erb :"lists/show"
+  if logged_in? && current_user.id == @list.user_id
+    erb :"/lists/edit"
+  else
+    redirect '/login'
+  end
+end
+
+put "/lists/:id" do
+  @list = List.find(params[:id])
+  @list.update_attributes(name: params[:name])
+  if @list.save
+    redirect "/lists"
+  else
+    @errors = @list.errors.full_messages
+    erb :"/lists/edit"
+  end
+end
+
+delete '/lists/:id' do
+  @list = List.find(params[:id]) 
+  @list.destroy
+  redirect '/lists'
 end
