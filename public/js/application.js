@@ -1,7 +1,22 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("#add-list-form").on('submit', function(event){
+    event.preventDefault();
+    // debugger;
+    var data = $(this).serialize();
+    var url = $(this).attr('action');
+    var method = $(this).attr('method');
+    // debugger;
+    $.ajax({
+      type: method,
+      url: url, 
+      data: data
+    }).done(function(response){
+      // debugger;
+      $(".list-list").after(response);
+    }).fail(function(response){
+      // debugger;
+      console.log(response);
+    })  
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  });
 });

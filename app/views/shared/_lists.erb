@@ -1,7 +1,17 @@
-<ul>
+<ul class="list-list" >
     <% lists.each do |list| %>
-      <li>
+      <li >
         <a href="/lists/<%= list.id %>"><%= list.title %></a>
-      </li>
+      
+      <% if current_user == list.user %>
+        <form action="/lists/<%= list.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input class="form_button" type="submit" value="Delete">
+        </form>
+        
+      <% end %>
+
     <% end %>
+    </li> 
 </ul>
+
