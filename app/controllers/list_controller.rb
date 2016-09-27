@@ -21,7 +21,9 @@ end
 
 before '/lists/:id' do
   @list = TodoList.find_by(id: params[:id])
-  if @list == nil
+  if params[:id] == 'new'
+    pass
+  elsif @list == nil
     halt 404, erb(:'404')
   end
 end
@@ -80,6 +82,7 @@ post '/lists/:list_id/tasks' do
 end
 
 before '/lists/:list_id/tasks/:id/edit' do
+  @list = TodoList.find_by(id: params[:list_id])
   if !owner?(@list)
     halt 404, erb(:'404')
   end
@@ -99,6 +102,7 @@ put '/lists/:list_id/tasks/:id' do
 end
 
 before '/lists/:list_id/tasks/:id/delete' do
+  @list = TodoList.find_by(id: params[:list_id])
   if !owner?(@list)
     halt 404, erb(:'404')
   end
