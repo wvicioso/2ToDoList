@@ -1,0 +1,9 @@
+<section id="updateList">
+  <%= erb :'_errors', locals: {errors: @errors} %>
+  <form id="newListForm" action="/lists/<%=@list.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <label>Enter a new title for your list: </label>
+    <input type="text" name="name">
+    <input type="submit" value="Update title">
+  </form>
+</section>

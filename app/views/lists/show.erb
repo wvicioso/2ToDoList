@@ -1,11 +1,12 @@
 <section id="todoDisplay">
   <h1 id="listTitle"><%= @list.name %></h1>
+  <a href="/lists/<%= @list.id %>/edit">Edit list title</a>
   <form id="tasks" action="/lists/<%=@list.id%>/tasks" method="post">
   <input type="hidden" name="_method" value="put">
     <% @tasks.each do |task| %>
       <div id="<%= task.id %>" class="taskDisplay">
         <input type="checkbox" name="<%= task.id %>"
-        <% if task.status %>
+        <% if task.complete? %>
           checked
         <% end %>
         >

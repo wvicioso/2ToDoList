@@ -100,8 +100,13 @@ label {
   font-size: 120%;
 }
 
-#newList form {
-  margin-top: 30px;
+#updateList {
+  height: 160px;
+}
+
+#updateList form {
+  font-size: 110%;
+  margin-top: 25px
 }
 
 #tasks {
@@ -123,5 +128,15 @@ label {
 
 #tasks input {
   display: inline-block;
+}
+
+#todoDisplay h1 {
+  display: inline-block;
+}
+
+#todoDisplay a {
+  font-size: 70%;
+  margin-left: 10px;
+  display: inline;
 }
 
