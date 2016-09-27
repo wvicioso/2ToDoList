@@ -13,6 +13,7 @@ post '/lists/:id/tasks' do
   else
     task = Task.new(
       description: params[:task][:description],
+      completed: params[:task][:completed],
       list_id: params[:id])
     if task.save
       redirect "/lists/#{task.list_id}"
