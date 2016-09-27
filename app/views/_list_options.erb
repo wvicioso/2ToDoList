@@ -1,0 +1,9 @@
+<div class="container-options">
+  <form class="form-options" action="/lists/<%= list.id %>/edit" method="get">
+    <button class="fa fa-pencil-square-o" type="submit" name="list_edit"></button>
+  </form>
+  <form class="form-options" action="/lists/<%= list.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="fa fa-trash-o" type="submit" name="list_delete"></button>
+  </form>
+</div>

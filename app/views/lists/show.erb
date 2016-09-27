@@ -2,7 +2,7 @@
 <h1><%= @list.name %></h1>
 <ul class="list">
 <% @tasklist.each do |task| %>
-  <%= erb :'tasks/_task', locals: {task: task}, layout: false %>
+  <%= erb :'tasks/_task', locals: {task: task, list: @list}, layout: false %>
 <% end %>
 </div>
 <form class="form-add-task" method="get" action="/lists/<%= @list.id %>/tasks/new">

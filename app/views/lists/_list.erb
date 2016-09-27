@@ -2,7 +2,7 @@
   <div class="container-lists">
     <ul class="todolist">
       <% lists.each do |list| %>
-        <li class="todolist-item"><a href="/lists/<%= list.id %>/show"><%= list.name %></a></li>
+        <li class="todolist-item"><%= erb :_list_options, locals: {list: list}, layout: false %><a href="/lists/<%= list.id %>/show"><%= list.name %></a></li>
       <% end %>
     </ul>
   </div>

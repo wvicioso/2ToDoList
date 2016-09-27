@@ -1,0 +1,6 @@
+<div class="container-edit">
+  <form class="form-edit" method="post" action="/lists/<%= list.id %>/tasks/<%= task.id %>">
+    <input type="hidden" name="_method" value="put">
+    <input type="text" name="description" value="<%= task.description %>">
+    <input type="submit" name="task_edit" value="Edit It">
+</div>
