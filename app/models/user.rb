@@ -1,3 +1,9 @@
 class User < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :lists
+  has_many :tasks, through: :lists
+
+  validates :username, uniqueness: { scope: :email }
+  validates :username,
+            :email,
+              presence: true
 end

@@ -1,3 +1,8 @@
 class Task < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :list
+  belongs_to :user, through: :list
+
+  validates :description,
+            :list_id,
+              presence: true
 end
