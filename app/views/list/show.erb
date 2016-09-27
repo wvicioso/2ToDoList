@@ -4,13 +4,36 @@
 <ul>
   <% @list.tasks.each do |task| %>
     <li><%= task.description %></li>
+
+    <% if current_user.id == @list.user_id %>
+      <div>
+        <span>
+          <form action="/lists/<%= @list.id%>/tasks/<%= task.id%>" method="post">
+            <input type="hidden" name="_method" value="put">
+            <input type="submit" value="Edit">
+          </form>
+        </span>
+
+        <span>
+          <form action="/lists/<%= @list.id%>/tasks/<%= task.id%>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete">
+          </form>
+        </span>
+
+      </div>
+    <% end %>
+
   <% end %>
 </ul>
 <% end %>
 
 <%= @error if @error %>
 
-<form action="/lists/<%= @list.id %>/tasks" method="post">
-  <input type="text" name="description">
-  <input type="submit" value="Add Task">
-</form>
+<% if current_user.id == @list.user_id %>
+  <form action="/lists/<%= @list.id %>/tasks" method="post">
+    <input type="text" name="description">
+    <input type="submit" value="Add Task">
+  </form>
+
+<% end %>
