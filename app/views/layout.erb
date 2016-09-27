@@ -11,7 +11,13 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
-
+  <!--
+    fontawesome cdn
+  -->
+  <script src="https://use.fontawesome.com/4f1036d1c5.js"></script>
+  <!--
+    scripts
+  -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
@@ -21,7 +27,7 @@
   <nav>
     <ul>
       <% if logged_in? %>
-        <li><%= current_user.username %></li>
+        <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
         <li><a href="/">home</a></li>
         <li><a href="/logout">log Out</a></li>
       <% else %>

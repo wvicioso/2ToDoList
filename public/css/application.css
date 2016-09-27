@@ -72,3 +72,8 @@ article p span.task-count:before {
 article p span.task-count:after {
   content: ' tasks | ';
 }
+
+.profile-list-title {
+  margin-right: 5px;
+  display: inline-block;
+}

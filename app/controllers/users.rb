@@ -28,6 +28,12 @@ post '/login' do
   end
 end
 
+get '/users/:id' do
+  @user = User.find(params[:id])
+  @lists = @user.lists.order('created_at desc')
+  erb :'users/show'
+end
+
 get '/logout' do
   session.clear
   redirect '/'

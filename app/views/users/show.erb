@@ -1,0 +1,13 @@
+<h2>Todo Lists</h2>
+
+<%=  erb(:_errors)%>
+
+<div class="">
+  <% @lists.each do |list| %>
+    <article id="<%= list.id %>">
+      <h3 class="profile-list-title"><%= list.title %></h3>
+      <span><a href="/lists/<%= list.id %>/edit">Edit</a> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+      <span><a class="delete-list" href="/lists/<%= list.id %>">Delete</a> <i class="fa fa-trash" aria-hidden="true"></i></span>
+    </article>
+  <% end %>
+</div>
