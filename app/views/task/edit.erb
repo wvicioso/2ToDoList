@@ -1,0 +1,8 @@
+<h2>Update Task:</h2>
+
+<%= @error if @error %>
+<form action="/lists/<%= @task.list_id %>/tasks/<%= @task.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+<input type="text" name="description">
+<input type="submit" value="Update Task">
+</form>

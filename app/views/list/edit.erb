@@ -1,0 +1,8 @@
+<h2>Update List Title:</h2>
+
+<%= @error if @error %>
+<form action="/lists/<%= @list.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+<input type="text" name="title" value="<%= @list.title %>">
+<input type="submit" value="Update Title">
+</form>
