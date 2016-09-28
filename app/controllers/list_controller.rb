@@ -17,11 +17,13 @@ end
 post '/users/:user_id/lists' do
   @user = User.find(params[:user_id])
   @list = List.new(user_id: @user.id, title: params[:title])
-  @task = Task.new(list_id: @list.id, title: params[:title], description: params[:description], due_date: params[:due_date])
+  # @task = Task.new(list_id: @list.id, title: params[:title], description: params[:description], due_date: params[:due_date])
+  # binding.pry
   if @list.save
 
     redirect "/users/#{@user.id}/lists"
   else
+   
     erb :'lists/index'
   end
 end

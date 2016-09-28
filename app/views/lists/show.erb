@@ -1,5 +1,24 @@
 <div class="container">
   <h1> FUCKING LISTS </h1>
-</div>
+  <h2><%= @list.title %></h2>
+  <% if @list %>
+    <ul>
+      <% @list.tasks.each do |task| %>
+        <li>Task: <%= task.title %></li>
+        <li>Description: <%= task.description %></li>
+        <li>Due: <%= task.due_date %></li>
+        <hr>
+      <% end %>
+    </ul>
+  <% end %>
 
-    <%= erb :'tasks/_new_task', layout: false %>
+</div>
+    <%= erb :'tasks/_new_task', locals: { list: @list }, layout: false %>
+
+<!--  
+
+      get '/users/1/lists/tasks/new' do
+          "Hello World"
+      end 
+
+      -->
