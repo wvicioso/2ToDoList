@@ -154,6 +154,13 @@ label {
   display: inline;
 }
 
+.deletable {
+  font-size: 70%;
+  margin-left: 10px;
+  display: inline;
+}
+}
+
 #completeButton {
   margin-top: 8px;
   display: block;

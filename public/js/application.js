@@ -75,4 +75,17 @@ $(document).ready(function() {
       $('#' + taskId).append(response);
     })
   })
+  $('#todoDisplay').on('click', '.deletable', function(e){
+    e.preventDefault();
+    var url = $(e.target).attr('href');
+    var path = url.slice(0,-7);
+    var $thisTask = $(e.target)
+    var request = $.ajax({
+      method: 'delete',
+      url: path,
+    })
+    request.done(function(){
+      $thisTask.closest('.taskDisplay').remove();
+    })
+  })
 });
