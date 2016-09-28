@@ -1,24 +1,29 @@
 <div class="container">
-  <h1> FUCKING LISTS </h1>
+  
+  <h1> YOUR LISTS </h1>
   <h2><%= @list.title %></h2>
+
   <% if @list %>
+
     <ul>
       <% @list.tasks.each do |task| %>
         <li>Task: <%= task.title %></li>
         <li>Description: <%= task.description %></li>
         <li>Due: <%= task.due_date %></li>
+
+          <form id="deleteButton" action="/users/<%= user.id %>/lists/<%= list.id %>/tasks/<%= task.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Delete task">
+          </form>
+
         <hr>
+
       <% end %>
     </ul>
   <% end %>
 
 </div>
+
+<!--  -->
     <%= erb :'tasks/_new_task', locals: { list: @list }, layout: false %>
-
-<!--  
-
-      get '/users/1/lists/tasks/new' do
-          "Hello World"
-      end 
-
-      -->
+<!--  -->

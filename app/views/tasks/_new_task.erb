@@ -2,19 +2,22 @@
 
 <br>
   <% if @errors %>
+
     <ul>
       <% @errors.each do |error| %>
         <li style="color:red"><%= error %></li>
+
       <% end %>
     </ul>
+
   <% end %>
 
   <form action="/users/<%= current_user.id %>/lists/<%= list.id %>/tasks/new" method="post">
         <label for="title">Task title: </label><br>
         <input type="text" name="task[title]"><br><br>
 
-        <label for="description">Task Description: </label>
-        <br/>
+        <label for="description">Task Description: </label><br/>
+
         <textarea rows="5" cols="20" name="task[description]">
         </textarea><br><br>
 

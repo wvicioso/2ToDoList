@@ -33,9 +33,10 @@ get '/users/:user_id/lists/:id' do
   @user = User.find(params[:user_id])
   @list = List.find(params[:id])
 
-  erb :'lists/show'
+  erb :'lists/show', locals: { list: @list, user: @user }
 end
 
 # Return a form for editing a list
 get '/users/:user_id/lists/:id/edit' do
 end
+
