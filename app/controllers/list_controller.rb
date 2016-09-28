@@ -102,7 +102,11 @@ post '/lists/:list_id/tasks' do
     end
   else
     @errors = ["Please enter a description of your task."]
-    erb :'tasks/_new'
+    if request.xhr?
+      halt 400
+    else
+      erb :'tasks/_new'
+    end
   end
 end
 

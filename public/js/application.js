@@ -56,6 +56,9 @@ $(document).ready(function() {
       $('#updateTask').remove();
       $('.addable').before(response);
     })
+    request.fail(function(){
+      alert("Please enter a task description!")
+    })
   })
   $('#tasks').on('click', '.checkbox', function(e){
     e.preventDefault();
