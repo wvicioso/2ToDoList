@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('#completeButton').addClass('hidden');
   $('#newList').find('a').click(function(e) {
     e.preventDefault();
     var path = $(e.target).attr('href');
