@@ -8,3 +8,5 @@ class CreateLists < ActiveRecord::Migration
     end
   end
 end
+
+# this is a change
