@@ -1,0 +1,9 @@
+<ul>
+  <% @list.tasks.each do |task| %>
+    <p>
+      <button type="button" value="button">done</button>
+      <%=task.description%><br>
+      <!-- <button style='hidden' type="button" value="done">not done</button> -->
+    </p>
+  <%end%>
+</ul>
